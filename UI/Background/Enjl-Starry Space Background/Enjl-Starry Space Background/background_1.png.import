@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cysy5yxes3vcu"
-path="res://.godot/imported/background_1.png-6bad8d8f041b6613f11e14138770c197.ctex"
+path="res://.godot/imported/background_1.png-7f348d37e33fb4b8d41e96de53c4900d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Space/Enjl-Starry Space Background/Enjl-Starry Space Background/background_1.png"
-dest_files=["res://.godot/imported/background_1.png-6bad8d8f041b6613f11e14138770c197.ctex"]
+source_file="res://UI/Background/Enjl-Starry Space Background/Enjl-Starry Space Background/background_1.png"
+dest_files=["res://.godot/imported/background_1.png-7f348d37e33fb4b8d41e96de53c4900d.ctex"]
 
 [params]
 

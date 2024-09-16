@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b7kaelc24s4g2" path="res://Entities/Ships/Player/player.tscn" id="1_oiuyy"]
 [ext_resource type="Script" path="res://GameManagement/game.gd" id="1_onlxy"]
-[ext_resource type="PackedScene" uid="uid://cwwo5teci2ajo" path="res://GameManagement/Background/parallax_background.tscn" id="2_f40u0"]
+[ext_resource type="PackedScene" uid="uid://cwwo5teci2ajo" path="res://UI/Background/parallax_background.tscn" id="2_f40u0"]
 [ext_resource type="PackedScene" uid="uid://cmdl3h1y5g7yg" path="res://GameManagement/SpawnArea/spawn_area.tscn" id="6_w7wkl"]
 [ext_resource type="AudioStream" uid="uid://bcjmopgvxjiiq" path="res://Assets/Space/kenney_space-shooter-redux/Bonus/sfx_laser2.ogg" id="7_ac7xg"]
 [ext_resource type="AudioStream" uid="uid://dwht846s3xhxm" path="res://Assets/Space/kenney_space-shooter-redux/Bonus/sfx_zap.ogg" id="8_1mep8"]

@@ -42,8 +42,8 @@ func _ready() -> void:
 		rotation = randf_range(0, 2 * PI)
 	sprite.rotation = randf_range(0, 2 * PI)
 	linear_velocity = movement_vector.rotated(rotation) * max_velocity
-	var imported_resouce = preload("res://Entities/Pickups/Data/StarData/bronze_star.tres")
-	pickup = Pickup.new()
+	var imported_resouce = preload("res://Entities/Pickups/Data/StarData/silver_star.tres")
+	pickup = preload("res://Entities/Pickups/Pickups.tscn").instantiate()
 	pickup.item = imported_resouce
 	
 	match size:
