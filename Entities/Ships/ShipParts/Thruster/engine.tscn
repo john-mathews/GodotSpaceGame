@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdu1vjp2sut6j"]
+
+[ext_resource type="Script" path="res://Entities/Ships/ShipParts/Thruster/engine.gd" id="1_qxj5y"]
+
+[sub_resource type="Curve" id="Curve_w1b7u"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ck8qq"]
+curve = SubResource("Curve_w1b7u")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jggo8"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(5, -1, 0)
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = -25.0
+angle_max = 25.0
+spread = 35.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 50.0
+linear_accel_max = 50.0
+color = Color(0.88747, 0.311101, 0, 1)
+emission_curve = SubResource("CurveTexture_ck8qq")
+
+[node name="Engine" type="Node2D"]
+script = ExtResource("1_qxj5y")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_jggo8")
+local_coords = true
+trail_enabled = true

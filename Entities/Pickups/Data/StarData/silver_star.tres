@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Collectible" load_steps=3 format=3 uid="uid://bqwtxibcvmibd"]
+
+[ext_resource type="Script" path="res://Entities/Pickups/Data/CollectiblesResource.gd" id="1_ddw1a"]
+[ext_resource type="PackedScene" uid="uid://donlx2ux4t1sq" path="res://Entities/Pickups/Stars/SilverStar.tscn" id="1_jh08q"]
+
+[resource]
+script = ExtResource("1_ddw1a")
+name = "Star Silver"
+scene = ExtResource("1_jh08q")
+value = 250

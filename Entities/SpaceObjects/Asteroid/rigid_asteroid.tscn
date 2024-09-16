@@ -1,0 +1,133 @@
+[gd_scene load_steps=27 format=3 uid="uid://bjpvauv4yq038"]
+
+[ext_resource type="Script" path="res://Entities/SpaceObjects/Asteroid/rigid_asteroid.gd" id="1_akax7"]
+[ext_resource type="Shape2D" uid="uid://j0p4ejolnb1q" path="res://Entities/SpaceObjects/Asteroid/Resources/asteroid_collision_L.tres" id="2_pwjwx"]
+[ext_resource type="PackedScene" uid="uid://drhg7ronxchov" path="res://Common/OffScreenTimer/off_screen_kill_timer.tscn" id="3_jtb3i"]
+[ext_resource type="PackedScene" uid="uid://d2ngm8f08flqt" path="res://Common/SpritePicker/rng_sprite_picker_list.tscn" id="4_1pj1u"]
+[ext_resource type="Texture2D" uid="uid://8of251ijb5fk" path="res://Entities/SpaceObjects/Asteroid/Assets/meteorBrown_big1.png" id="5_pcok4"]
+[ext_resource type="Texture2D" uid="uid://k0fptof8ldiy" path="res://Entities/SpaceObjects/Asteroid/Assets/meteorBrown_big2.png" id="6_bdnsu"]
+[ext_resource type="Texture2D" uid="uid://bmqwwc2yo7f0n" path="res://Entities/SpaceObjects/Asteroid/Assets/meteorBrown_big3.png" id="7_3xjs5"]
+[ext_resource type="Texture2D" uid="uid://nxihb07gh1uq" path="res://Entities/SpaceObjects/Asteroid/Assets/meteorBrown_big4.png" id="8_c7mmi"]
+[ext_resource type="Texture2D" uid="uid://clkxr1wm0dr0c" path="res://Entities/SpaceObjects/Asteroid/Assets/meteorGrey_big1.png" id="9_5bmyt"]
+[ext_resource type="Texture2D" uid="uid://ghq4airuu52w" path="res://Entities/SpaceObjects/Asteroid/Assets/meteorGrey_big2.png" id="10_glw2n"]
+[ext_resource type="Texture2D" uid="uid://je8hvolqfjc5" path="res://Entities/SpaceObjects/Asteroid/Assets/meteorGrey_big3.png" id="11_6rebs"]
+[ext_resource type="Texture2D" uid="uid://b1dwwajb6ommw" path="res://Entities/SpaceObjects/Asteroid/Assets/meteorGrey_big4.png" id="12_rqbq8"]
+[ext_resource type="Texture2D" uid="uid://qj4dv27yaaea" path="res://Entities/SpaceObjects/Asteroid/Assets/meteorBrown_med1.png" id="13_qkreg"]
+[ext_resource type="Texture2D" uid="uid://dn25s5nrgmvua" path="res://Entities/SpaceObjects/Asteroid/Assets/meteorBrown_med3.png" id="14_0dqcx"]
+[ext_resource type="Texture2D" uid="uid://ok5rvt2ofg05" path="res://Entities/SpaceObjects/Asteroid/Assets/meteorGrey_med1.png" id="15_6yirk"]
+[ext_resource type="Texture2D" uid="uid://ss1n8e116ngx" path="res://Entities/SpaceObjects/Asteroid/Assets/meteorGrey_med2.png" id="16_knet6"]
+[ext_resource type="Texture2D" uid="uid://b7bw1rrgpy1kk" path="res://Entities/SpaceObjects/Asteroid/Assets/meteorBrown_small1.png" id="17_fx0p4"]
+[ext_resource type="Texture2D" uid="uid://dg1hmw3y37hxj" path="res://Entities/SpaceObjects/Asteroid/Assets/meteorBrown_small2.png" id="18_aldtg"]
+[ext_resource type="Texture2D" uid="uid://cdyihe3gmujo0" path="res://Entities/SpaceObjects/Asteroid/Assets/meteorGrey_small1.png" id="19_pbcb6"]
+[ext_resource type="Texture2D" uid="uid://cm3gj6bs42x5t" path="res://Entities/SpaceObjects/Asteroid/Assets/meteorGrey_small2.png" id="20_cjfdp"]
+[ext_resource type="Texture2D" uid="uid://uyw2dljatyui" path="res://Entities/SpaceObjects/Asteroid/Assets/meteorBrown_tiny1.png" id="21_lw8yy"]
+[ext_resource type="Texture2D" uid="uid://drfepuxvu2ahd" path="res://Entities/SpaceObjects/Asteroid/Assets/meteorBrown_tiny2.png" id="22_j00is"]
+[ext_resource type="Texture2D" uid="uid://b2hd6hagb2wah" path="res://Entities/SpaceObjects/Asteroid/Assets/meteorGrey_tiny1.png" id="23_b5jbt"]
+[ext_resource type="Texture2D" uid="uid://b2kh04y7y0aes" path="res://Entities/SpaceObjects/Asteroid/Assets/meteorGrey_tiny2.png" id="24_6l768"]
+[ext_resource type="PackedScene" uid="uid://dx663bgskkwdf" path="res://UI/HealthBar/progress_bar.tscn" id="25_05qn4"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bpt48"]
+friction = 0.0
+bounce = 1.0
+
+[node name="RigidAsteroid" type="RigidBody2D"]
+physics_interpolation_mode = 1
+collision_layer = 4
+collision_mask = 30
+mass = 5.0
+physics_material_override = SubResource("PhysicsMaterial_bpt48")
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 5
+script = ExtResource("1_akax7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = ExtResource("2_pwjwx")
+
+[node name="OffScreenKillTimer" parent="." instance=ExtResource("3_jtb3i")]
+
+[node name="SpritePickers" type="Node" parent="."]
+
+[node name="RngSpritePickerListLarge" parent="SpritePickers" instance=ExtResource("4_1pj1u")]
+visible = false
+
+[node name="Sprite2D5" type="Sprite2D" parent="SpritePickers/RngSpritePickerListLarge"]
+texture = ExtResource("5_pcok4")
+
+[node name="Sprite2D6" type="Sprite2D" parent="SpritePickers/RngSpritePickerListLarge"]
+texture = ExtResource("6_bdnsu")
+
+[node name="Sprite2D2" type="Sprite2D" parent="SpritePickers/RngSpritePickerListLarge"]
+texture = ExtResource("7_3xjs5")
+
+[node name="Sprite2D" type="Sprite2D" parent="SpritePickers/RngSpritePickerListLarge"]
+texture = ExtResource("8_c7mmi")
+
+[node name="Sprite2D3" type="Sprite2D" parent="SpritePickers/RngSpritePickerListLarge"]
+texture = ExtResource("9_5bmyt")
+
+[node name="Sprite2D4" type="Sprite2D" parent="SpritePickers/RngSpritePickerListLarge"]
+texture = ExtResource("10_glw2n")
+
+[node name="Sprite2D7" type="Sprite2D" parent="SpritePickers/RngSpritePickerListLarge"]
+texture = ExtResource("11_6rebs")
+
+[node name="Sprite2D8" type="Sprite2D" parent="SpritePickers/RngSpritePickerListLarge"]
+texture = ExtResource("12_rqbq8")
+
+[node name="RngSpritePickerListMedium" parent="SpritePickers" instance=ExtResource("4_1pj1u")]
+visible = false
+
+[node name="Sprite2D5" type="Sprite2D" parent="SpritePickers/RngSpritePickerListMedium"]
+texture = ExtResource("13_qkreg")
+
+[node name="Sprite2D6" type="Sprite2D" parent="SpritePickers/RngSpritePickerListMedium"]
+texture = ExtResource("14_0dqcx")
+
+[node name="Sprite2D2" type="Sprite2D" parent="SpritePickers/RngSpritePickerListMedium"]
+texture = ExtResource("15_6yirk")
+
+[node name="Sprite2D" type="Sprite2D" parent="SpritePickers/RngSpritePickerListMedium"]
+texture = ExtResource("16_knet6")
+
+[node name="RngSpritePickerListSmall" parent="SpritePickers" instance=ExtResource("4_1pj1u")]
+visible = false
+
+[node name="Sprite2D5" type="Sprite2D" parent="SpritePickers/RngSpritePickerListSmall"]
+texture = ExtResource("17_fx0p4")
+
+[node name="Sprite2D6" type="Sprite2D" parent="SpritePickers/RngSpritePickerListSmall"]
+texture = ExtResource("18_aldtg")
+
+[node name="Sprite2D2" type="Sprite2D" parent="SpritePickers/RngSpritePickerListSmall"]
+texture = ExtResource("19_pbcb6")
+
+[node name="Sprite2D" type="Sprite2D" parent="SpritePickers/RngSpritePickerListSmall"]
+texture = ExtResource("20_cjfdp")
+
+[node name="RngSpritePickerListTiny" parent="SpritePickers" instance=ExtResource("4_1pj1u")]
+visible = false
+
+[node name="Sprite2D5" type="Sprite2D" parent="SpritePickers/RngSpritePickerListTiny"]
+texture = ExtResource("21_lw8yy")
+
+[node name="Sprite2D6" type="Sprite2D" parent="SpritePickers/RngSpritePickerListTiny"]
+texture = ExtResource("22_j00is")
+
+[node name="Sprite2D2" type="Sprite2D" parent="SpritePickers/RngSpritePickerListTiny"]
+texture = ExtResource("23_b5jbt")
+
+[node name="Sprite2D" type="Sprite2D" parent="SpritePickers/RngSpritePickerListTiny"]
+texture = ExtResource("24_6l768")
+
+[node name="ProgressBar" parent="." instance=ExtResource("25_05qn4")]
+layout_direction = 1
+offset_left = -16.0
+offset_top = -2.0
+offset_right = 16.0
+offset_bottom = 3.0
+pivot_offset = Vector2(16, 2)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfe4tgb3kv1tr"]
+
+[ext_resource type="Texture2D" uid="uid://dmslp1qpvmrqg" path="res://Assets/Space/kenney_space-shooter-redux/PNG/Lasers/laserBlue01.png" id="1_hqahe"]
+[ext_resource type="Script" path="res://Entities/Ships/ShipParts/Weapons/Laser/laser.gd" id="1_yswmq"]
+[ext_resource type="PackedScene" uid="uid://drhg7ronxchov" path="res://Common/OffScreenTimer/off_screen_kill_timer.tscn" id="3_wgcbj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wud20"]
+radius = 6.0
+height = 54.0
+
+[node name="Laser" type="Area2D"]
+position = Vector2(0, -13)
+scale = Vector2(0.5, 0.5)
+collision_layer = 8
+collision_mask = 5
+script = ExtResource("1_yswmq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_hqahe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_wud20")
+
+[node name="OffScreenKillTimer" parent="." instance=ExtResource("3_wgcbj")]
+position = Vector2(-1, 1.19209e-06)
+scale = Vector2(1.1, 2.6)
+killTime = 3
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="killParent" from="OffScreenKillTimer" to="." method="_on_off_screen_kill_timer_kill_parent"]

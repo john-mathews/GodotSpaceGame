@@ -1,0 +1,94 @@
+[gd_scene load_steps=7 format=3 uid="uid://6u2xgpe1ctno"]
+
+[ext_resource type="Script" path="res://Entities/Ships/ShipParts/MiningEquipment/mining_laser.gd" id="1_3ncsl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3gv6c"]
+radius = 500.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pnexb"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = -25.0
+angle_max = 25.0
+spread = 92.103
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 15.0
+linear_accel_max = 50.0
+radial_accel_min = -2.23517e-06
+radial_accel_max = 50.0
+color = Color(0.329412, 1, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_x3qi6"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vb2ol"]
+gradient = SubResource("Gradient_x3qi6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hbdqd"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = -25.0
+angle_max = 25.0
+direction = Vector3(1, 1, 0)
+spread = 92.103
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 30.0
+linear_accel_max = 75.0
+radial_accel_min = -2.23517e-06
+radial_accel_max = 50.0
+color = Color(1, 0.236451, 0.0848017, 1)
+color_ramp = SubResource("GradientTexture1D_vb2ol")
+
+[node name="MiningLaser" type="RayCast2D"]
+target_position = Vector2(1000, 0)
+collision_mask = 4
+hit_from_inside = true
+collide_with_areas = true
+script = ExtResource("1_3ncsl")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 641, 0)
+default_color = Color(0.529412, 1, 0.827451, 1)
+
+[node name="LaserRange" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LaserRange"]
+shape = SubResource("CircleShape2D_3gv6c")
+
+[node name="Effects" type="Node2D" parent="."]
+
+[node name="StartEffect" type="GPUParticles2D" parent="Effects"]
+visible = false
+z_index = 5
+amount = 500
+process_material = SubResource("ParticleProcessMaterial_pnexb")
+lifetime = 0.4
+local_coords = true
+
+[node name="EndEffect" type="GPUParticles2D" parent="Effects"]
+visible = false
+z_index = 5
+amount = 500
+process_material = SubResource("ParticleProcessMaterial_pnexb")
+speed_scale = 1.5
+explosiveness = 0.25
+local_coords = true
+
+[node name="DamageEffect" type="GPUParticles2D" parent="Effects"]
+visible = false
+z_index = 5
+emitting = false
+amount = 1000
+process_material = SubResource("ParticleProcessMaterial_hbdqd")
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+
+[connection signal="area_entered" from="LaserRange" to="." method="_on_laser_range_area_entered"]
+[connection signal="area_exited" from="LaserRange" to="." method="_on_laser_range_area_exited"]
+[connection signal="body_entered" from="LaserRange" to="." method="_on_laser_range_body_entered"]
+[connection signal="body_exited" from="LaserRange" to="." method="_on_laser_range_body_exited"]

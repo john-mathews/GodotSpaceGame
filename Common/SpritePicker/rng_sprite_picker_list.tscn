@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2ngm8f08flqt"]
+
+[ext_resource type="Script" path="res://Common/SpritePicker/rng_sprite_picker_list.gd" id="1_lv65o"]
+
+[node name="RngSpritePickerList" type="Node2D"]
+script = ExtResource("1_lv65o")

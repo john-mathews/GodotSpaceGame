@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqosav0j357mx"]
+
+[ext_resource type="Script" path="res://Entities/Pickups/Pickups.gd" id="1_7lbqs"]
+[ext_resource type="Resource" uid="uid://bow80nf21kfml" path="res://Entities/Pickups/Data/StarData/bronze_star.tres" id="2_glbmy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bgesp"]
+radius = 20.0
+
+[node name="Pickup" type="Node2D"]
+script = ExtResource("1_7lbqs")
+item = ExtResource("2_glbmy")
+
+[node name="Collectible" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectible"]
+shape = SubResource("CircleShape2D_bgesp")
+
+[connection signal="body_entered" from="Collectible" to="." method="_on_body_entered"]

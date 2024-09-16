@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://donlx2ux4t1sq"]
+
+[ext_resource type="Texture2D" uid="uid://djshnnfklp76e" path="res://Entities/Pickups/Assets/star_silver.png" id="1_1fefd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d3pjt"]
+radius = 20.0
+
+[node name="SilverStar" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -2)
+texture = ExtResource("1_1fefd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_d3pjt")

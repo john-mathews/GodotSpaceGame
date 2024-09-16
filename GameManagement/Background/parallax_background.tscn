@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwwo5teci2ajo"]
+
+[ext_resource type="Texture2D" uid="uid://cysy5yxes3vcu" path="res://Assets/Space/Enjl-Starry Space Background/Enjl-Starry Space Background/background_1.png" id="1_lr44p"]
+[ext_resource type="Texture2D" uid="uid://bivr3481nnvl6" path="res://Assets/Space/Enjl-Starry Space Background/Enjl-Starry Space Background/background_2.png" id="2_d4utk"]
+[ext_resource type="Texture2D" uid="uid://boksl5tyalfem" path="res://Assets/Space/Enjl-Starry Space Background/Enjl-Starry Space Background/background_3.png" id="3_580dj"]
+[ext_resource type="Texture2D" uid="uid://dlu1o3euqb2q6" path="res://Assets/Space/Enjl-Starry Space Background/Enjl-Starry Space Background/background_4.png" id="4_i642t"]
+
+[node name="ParallaxBackground" type="Node2D"]
+z_index = -100
+position = Vector2(640, 360)
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.1, 0.1)
+repeat_size = Vector2(512, 448)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_lr44p")
+
+[node name="Parallax2D4" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.12, 0.12)
+repeat_size = Vector2(512, 448)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D4"]
+scale = Vector2(2, 2)
+texture = ExtResource("4_i642t")
+
+[node name="Parallax2D2" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.15, 0.15)
+repeat_size = Vector2(512, 448)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D2"]
+scale = Vector2(2, 2)
+texture = ExtResource("2_d4utk")
+
+[node name="Parallax2D3" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.2, 0.2)
+repeat_size = Vector2(512, 448)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D3"]
+scale = Vector2(2, 2)
+texture = ExtResource("3_580dj")

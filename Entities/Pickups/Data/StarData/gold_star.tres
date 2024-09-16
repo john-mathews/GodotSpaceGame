@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Collectible" load_steps=3 format=3 uid="uid://oa1agn5ilwnt"]
+
+[ext_resource type="PackedScene" uid="uid://8vd7ctvltlac" path="res://Entities/Pickups/Stars/GoldStar.tscn" id="1_7l7n7"]
+[ext_resource type="Script" path="res://Entities/Pickups/Data/CollectiblesResource.gd" id="2_70qnn"]
+
+[resource]
+script = ExtResource("2_70qnn")
+name = "Solar Gold"
+scene = ExtResource("1_7l7n7")
+value = 1000

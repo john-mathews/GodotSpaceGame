@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dx663bgskkwdf"]
+
+[sub_resource type="Theme" id="Theme_65osf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_17bgp"]
+bg_color = Color(0.309274, 0.707386, 0, 1)
+
+[node name="ProgressBar" type="ProgressBar"]
+offset_left = -51.0
+offset_top = -22.0
+offset_right = 48.0
+offset_bottom = -4.0
+theme = SubResource("Theme_65osf")
+theme_override_styles/fill = SubResource("StyleBoxFlat_17bgp")
+show_percentage = false

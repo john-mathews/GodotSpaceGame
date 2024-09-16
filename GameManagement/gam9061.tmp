@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://cpfsvgfxvi7pn"]
+
+[ext_resource type="PackedScene" uid="uid://b7kaelc24s4g2" path="res://Player/player.tscn" id="1_oiuyy"]
+[ext_resource type="Script" path="res://GameManagement/game.gd" id="1_onlxy"]
+[ext_resource type="PackedScene" uid="uid://cwwo5teci2ajo" path="res://GameManagement/Background/parallax_background.tscn" id="2_f40u0"]
+[ext_resource type="PackedScene" uid="uid://cmdl3h1y5g7yg" path="res://GameManagement/SpawnArea/spawn_area.tscn" id="6_w7wkl"]
+[ext_resource type="AudioStream" uid="uid://bcjmopgvxjiiq" path="res://Assets/Space/kenney_space-shooter-redux/Bonus/sfx_laser2.ogg" id="7_ac7xg"]
+[ext_resource type="AudioStream" uid="uid://dwht846s3xhxm" path="res://Assets/Space/kenney_space-shooter-redux/Bonus/sfx_zap.ogg" id="8_1mep8"]
+[ext_resource type="AudioStream" uid="uid://bs8j1qy7c2ycv" path="res://Assets/Space/kenney_space-shooter-redux/Bonus/sfx_shieldDown.ogg" id="9_mgjie"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_onlxy")
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("2_f40u0")]
+
+[node name="Player" parent="." instance=ExtResource("1_oiuyy")]
+position = Vector2(640, 360)
+
+[node name="Lasers" type="Node2D" parent="."]
+
+[node name="Asteroids" type="Node2D" parent="."]
+
+[node name="SpawnArea" parent="." instance=ExtResource("6_w7wkl")]
+position = Vector2(642, 361)
+collision_layer = 16
+collision_mask = 4
+
+[node name="LaserSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_ac7xg")
+volume_db = -20.0
+
+[node name="AsteroidHitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_1mep8")
+volume_db = -20.0
+
+[node name="PlayerHit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_mgjie")
+volume_db = -20.0
+
+[node name="AsteroidSpawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="AsteroidSpawnTimer" to="." method="_on_asteroid_spawn_timer_timeout"]
