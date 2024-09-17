@@ -27,14 +27,14 @@ var lives : int:
 		lives = value
 		hud.init_lives(value) 
 
-func _ready():
-	spawn_asteroid(getAsteroidSpawnPos(), Asteroid.AsteroidSize.LARGE, 1)
+func _ready():	
 	lives = starting_lives
 	score = 0
 	game_over.visible = false
 	player.weapon.connect("laser_shot", _on_player_laser_shot)
 	player.connect("died", _on_player_died)
 	player_spawn.position = player.start_pos
+	spawn_asteroid(getAsteroidSpawnPos(), Asteroid.AsteroidSize.LARGE, 1)
 	
 	for asteroid in asteroids.get_children():
 		asteroid.connect("exploded", _on_asteroid_exploded)

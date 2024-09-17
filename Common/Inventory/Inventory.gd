@@ -3,7 +3,6 @@ class_name Inventory
 var _content: Array[Collectible] = []
 
 func add_item(item:Collectible):
-	print(item.value)
 	_content.append(item)
 
 func remove_item(item:Collectible):
@@ -11,3 +10,4 @@ func remove_item(item:Collectible):
 	
 func get_items() -> Array[Collectible]:
 	return _content
+	

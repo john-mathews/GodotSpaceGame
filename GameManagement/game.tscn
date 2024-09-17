@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cpfsvgfxvi7pn"]
+[gd_scene load_steps=8 format=3 uid="uid://cpfsvgfxvi7pn"]
 
 [ext_resource type="PackedScene" uid="uid://b7kaelc24s4g2" path="res://Entities/Ships/Player/player.tscn" id="1_oiuyy"]
 [ext_resource type="Script" path="res://GameManagement/game.gd" id="1_onlxy"]
@@ -6,10 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cmdl3h1y5g7yg" path="res://GameManagement/SpawnArea/spawn_area.tscn" id="6_w7wkl"]
 [ext_resource type="AudioStream" uid="uid://bcjmopgvxjiiq" path="res://Assets/Space/kenney_space-shooter-redux/Bonus/sfx_laser2.ogg" id="7_ac7xg"]
 [ext_resource type="AudioStream" uid="uid://dwht846s3xhxm" path="res://Assets/Space/kenney_space-shooter-redux/Bonus/sfx_zap.ogg" id="8_1mep8"]
-[ext_resource type="PackedScene" uid="uid://dqosav0j357mx" path="res://Entities/Pickups/Pickups.tscn" id="8_8d5f0"]
 [ext_resource type="AudioStream" uid="uid://bs8j1qy7c2ycv" path="res://Assets/Space/kenney_space-shooter-redux/Bonus/sfx_shieldDown.ogg" id="9_mgjie"]
-[ext_resource type="Resource" uid="uid://oa1agn5ilwnt" path="res://Entities/Pickups/Data/StarData/gold_star.tres" id="9_mprom"]
-[ext_resource type="Resource" uid="uid://bqwtxibcvmibd" path="res://Entities/Pickups/Data/StarData/silver_star.tres" id="10_l366c"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_onlxy")
@@ -45,16 +42,5 @@ wait_time = 5.0
 autostart = true
 
 [node name="Drops" type="Node2D" parent="."]
-
-[node name="Collectible" parent="Drops" instance=ExtResource("8_8d5f0")]
-position = Vector2(881, 454)
-
-[node name="Collectible2" parent="Drops" instance=ExtResource("8_8d5f0")]
-position = Vector2(877, 154)
-item = ExtResource("9_mprom")
-
-[node name="Collectible3" parent="Drops" instance=ExtResource("8_8d5f0")]
-position = Vector2(251, 323)
-item = ExtResource("10_l366c")
 
 [connection signal="timeout" from="AsteroidSpawnTimer" to="." method="_on_asteroid_spawn_timer_timeout"]

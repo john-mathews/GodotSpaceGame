@@ -42,7 +42,8 @@ func _ready() -> void:
 		rotation = randf_range(0, 2 * PI)
 	sprite.rotation = randf_range(0, 2 * PI)
 	linear_velocity = movement_vector.rotated(rotation) * max_velocity
-	var imported_resouce = preload("res://Entities/Pickups/Data/StarData/silver_star.tres")
+	var resource_path = GameState.star_drop_resource_paths.pick_random()
+	var imported_resouce = load(resource_path)
 	pickup = preload("res://Entities/Pickups/Pickups.tscn").instantiate()
 	pickup.item = imported_resouce
 	
@@ -93,6 +94,7 @@ func take_damage(damage: int):
 	health -= damage
 	update_health_bar()
 	if (health <= 0):
+		pickup.movement_vector = linear_velocity.normalized()
 		emit_signal("exploded", global_position, size, points, pickup)
 		queue_free()
 

@@ -131,3 +131,4 @@ offset_bottom = 3.0
 pivot_offset = Vector2(16, 2)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="killParent" from="OffScreenKillTimer" to="." method="_on_off_screen_kill_timer_kill_parent"]

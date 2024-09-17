@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b7kaelc24s4g2"]
+[gd_scene load_steps=10 format=3 uid="uid://b7kaelc24s4g2"]
 
 [ext_resource type="Script" path="res://Entities/Ships/Player/player.gd" id="1_t6wrp"]
 [ext_resource type="Texture2D" uid="uid://debcml6i8c7gj" path="res://Assets/Space/kenney_simple-space/PNG/Default/ship_L.png" id="1_v3anw"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://6u2xgpe1ctno" path="res://Entities/Ships/ShipParts/MiningEquipment/mining_laser.tscn" id="5_1wtpg"]
 [ext_resource type="Script" path="res://Entities/Ships/ShipParts/Weapons/weapons.gd" id="5_8m5vj"]
 [ext_resource type="PackedScene" uid="uid://cdu1vjp2sut6j" path="res://Entities/Ships/ShipParts/Thruster/engine.tscn" id="5_fy4u1"]
+[ext_resource type="PackedScene" uid="uid://b1apj2mipsjn1" path="res://Entities/Ships/ShipParts/TractorBeam/tractor_beam.tscn" id="8_6ffj7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e3bck"]
 radius = 8.0
@@ -51,3 +52,5 @@ rotation = 3.14159
 z_index = 5
 z_as_relative = false
 rotation = -1.5708
+
+[node name="TractorBeam" parent="ShipParts" instance=ExtResource("8_6ffj7")]

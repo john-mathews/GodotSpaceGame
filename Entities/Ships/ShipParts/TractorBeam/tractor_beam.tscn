@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1apj2mipsjn1"]
+
+[ext_resource type="Script" path="res://Entities/Ships/ShipParts/TractorBeam/tractor_beam.gd" id="1_q5mv3"]
+[ext_resource type="Texture2D" uid="uid://5wkb35t8iely" path="res://Assets/Space/kenney_space-shooter-redux/PNG/Parts/turretBase_big.png" id="2_m4o8d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1b6k5"]
+radius = 150.0
+
+[node name="TractorBeam" type="Node2D"]
+script = ExtResource("1_q5mv3")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_1b6k5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.588235, 0.992157, 0.0705882, 0.207843)
+scale = Vector2(7.5, 7.5)
+texture = ExtResource("2_m4o8d")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -1,20 +1,21 @@
 [gd_scene load_steps=4 format=3 uid="uid://dqosav0j357mx"]
 
 [ext_resource type="Script" path="res://Entities/Pickups/Pickups.gd" id="1_7lbqs"]
-[ext_resource type="Resource" uid="uid://bow80nf21kfml" path="res://Entities/Pickups/Data/StarData/bronze_star.tres" id="2_glbmy"]
+[ext_resource type="PackedScene" uid="uid://drhg7ronxchov" path="res://Common/OffScreenTimer/off_screen_kill_timer.tscn" id="3_y6vvw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bgesp"]
 radius = 20.0
 
-[node name="Pickup" type="Node2D"]
-script = ExtResource("1_7lbqs")
-item = ExtResource("2_glbmy")
-
-[node name="Collectible" type="Area2D" parent="."]
+[node name="Collectible" type="Area2D"]
 collision_layer = 32
 collision_mask = 2
+script = ExtResource("1_7lbqs")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectible"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_bgesp")
 
-[connection signal="body_entered" from="Collectible" to="." method="_on_body_entered"]
+[node name="OffScreenKillTimer" parent="." instance=ExtResource("3_y6vvw")]
+killTime = 15
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="killParent" from="OffScreenKillTimer" to="." method="_on_off_screen_kill_timer_kill_parent"]

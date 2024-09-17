@@ -30,7 +30,11 @@ window/size/viewport_height=720
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/gdscript_formatter/plugin.cfg")
+enabled=PackedStringArray("res://addons/godot_resource_groups/plugin.cfg")
+
+[godot_resource_groups]
+
+auto_rebuild=true
 
 [input]
 
@@ -73,6 +77,7 @@ shoot={
 2d_physics/layer_4="projectile"
 2d_physics/layer_5="player_spawn"
 2d_physics/layer_6="pickup"
+2d_physics/layer_7="tractor_beam"
 
 [rendering]
 

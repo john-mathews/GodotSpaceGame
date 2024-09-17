@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ResourceGroup" load_steps=2 format=3 uid="uid://cwwa85hjxrbm3"]
+
+[ext_resource type="Script" path="res://addons/godot_resource_groups/resource_group.gd" id="1_37jk3"]
+
+[resource]
+script = ExtResource("1_37jk3")
+base_folder = "res://Entities/Pickups/Data/StarData"
+includes = Array[String](["**.tres"])
+excludes = Array[String]([])
+paths = Array[String]([])

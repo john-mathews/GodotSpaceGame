@@ -1,10 +1,9 @@
-[gd_resource type="Resource" script_class="Collectible" load_steps=3 format=3 uid="uid://bow80nf21kfml"]
+[gd_resource type="Resource" script_class="Collectible" load_steps=2 format=3 uid="uid://bow80nf21kfml"]
 
-[ext_resource type="PackedScene" uid="uid://cx0ymnwleomg6" path="res://Entities/Pickups/Stars/BronzeStar.tscn" id="1_n8d37"]
 [ext_resource type="Script" path="res://Entities/Pickups/Data/CollectiblesResource.gd" id="1_wqha0"]
 
 [resource]
 script = ExtResource("1_wqha0")
 name = "Star Penny"
-scene = ExtResource("1_n8d37")
 value = 100
+sprite_path = "res://Entities/Pickups/Assets/star_bronze.png"
