@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5hsqef3q5hx6"]
+
+[sub_resource type="Curve" id="Curve_l7gqd"]
+min_value = -50.0
+max_value = 50.0
+_data = [Vector2(0, 50), 0.0, 0.0, 0, 0, Vector2(0.288136, 31.4286), -123.71, -123.71, 0, 0, Vector2(1, -50), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_lqexq"]
+curve = SubResource("Curve_l7gqd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qd3h7"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+spread = 180.0
+initial_velocity_min = 10.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 0.999998
+linear_accel_max = 40.0
+linear_accel_curve = SubResource("CurveTexture_lqexq")
+
+[node name="HyperDrive" type="GPUParticles2D"]
+amount = 800
+process_material = SubResource("ParticleProcessMaterial_qd3h7")
+lifetime = 5.0

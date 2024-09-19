@@ -68,3 +68,5 @@ func respawn():
 func collect_item(item: Collectible):
 	inventory.add_item(item)
 	
+func _on_tractor_beam_get_player(beam: Node2D) -> void:
+	beam.set_player(self)

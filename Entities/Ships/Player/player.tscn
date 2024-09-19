@@ -54,3 +54,5 @@ z_as_relative = false
 rotation = -1.5708
 
 [node name="TractorBeam" parent="ShipParts" instance=ExtResource("8_6ffj7")]
+
+[connection signal="get_player" from="ShipParts/TractorBeam" to="." method="_on_tractor_beam_get_player"]

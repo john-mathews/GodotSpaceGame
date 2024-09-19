@@ -11,3 +11,5 @@ func remove_item(item:Collectible):
 func get_items() -> Array[Collectible]:
 	return _content
 	
+func get_item_count(item: Collectible) -> int:
+	return _content.count(item)

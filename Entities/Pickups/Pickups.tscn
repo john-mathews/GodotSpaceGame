@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqosav0j357mx"]
+[gd_scene load_steps=5 format=3 uid="uid://dqosav0j357mx"]
 
 [ext_resource type="Script" path="res://Entities/Pickups/Pickups.gd" id="1_7lbqs"]
+[ext_resource type="PackedScene" uid="uid://d4mmaeb4yf15u" path="res://Entities/Ships/ShipParts/TractorBeam/tractor_beam_effect.tscn" id="3_hjf4m"]
 [ext_resource type="PackedScene" uid="uid://drhg7ronxchov" path="res://Common/OffScreenTimer/off_screen_kill_timer.tscn" id="3_y6vvw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bgesp"]
@@ -16,6 +17,12 @@ shape = SubResource("CircleShape2D_bgesp")
 
 [node name="OffScreenKillTimer" parent="." instance=ExtResource("3_y6vvw")]
 killTime = 15
+
+[node name="TractorBeamEffect" parent="." instance=ExtResource("3_hjf4m")]
+modulate = Color(0.180392, 1, 0.196078, 0.372549)
+scale = Vector2(0.06, 0.06)
+amount = 200
+script = null
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="killParent" from="OffScreenKillTimer" to="." method="_on_off_screen_kill_timer_kill_parent"]
