@@ -11,25 +11,31 @@ var rotation_speed := 200.0
 @onready var thruster_effect = $ShipParts/Engine/GPUParticles2D
 @onready var thruster = $ShipParts/Engine
 @onready var weapon = $ShipParts/Weapons
+@onready var hud = $UI/HUD
 
 var alive := true
 var start_pos: Vector2
 var inventory: Inventory = Inventory.new()
+@export var starting_lives = 3
+
+var lives : int:
+	set(value):
+		lives = value
+		hud.init_lives(value) 
 
 func _ready() -> void:
 	start_pos = global_position
+	lives = starting_lives
 	acceleration = thruster.acceleration
 	max_velocity = thruster.max_velocity
 	rotation_speed = thruster.rotation_speed
 	
 func _process(delta: float) -> void:
-	if !alive: return
+	if lives <= 0: return
 	if Input.is_action_pressed("shoot"):
 		weapon.shoot_pressed()
 
 func _physics_process(delta: float) -> void:
-	if !alive: return
-	
 	var input_vector := Vector2(0, Input.get_axis("move_forward","move_backward"))
 	velocity += input_vector.rotated(rotation) * acceleration
 	velocity = velocity.limit_length(max_velocity)
@@ -46,25 +52,25 @@ func _physics_process(delta: float) -> void:
 		rotate(deg_to_rad(rotation_speed*delta*-1))
 		
 	var collision = move_and_collide(velocity * delta)
-	if collision != null && collision.get_collider() is Asteroid:
+	if alive && collision != null && collision.get_collider() is Asteroid:
 		die()
 	
 func die():
 	if alive:
 		alive = false
-		self.visible = false
-		cshape.set_deferred("disabled", true)
+		#cshape.set_deferred("disabled", true)
 		emit_signal("died")
 
 func respawn():
 	if !alive:
-		alive = true
-		global_position = start_pos
-		velocity = Vector2.ZERO
-		rotation = 0
-		self.visible = true
-		cshape.set_deferred("disabled", false)
+		var flash_tween = get_tree().create_tween().set_loops(5)
+		flash_tween.tween_property(self, "modulate:a", .1, .3)
+		flash_tween.tween_property(self, "modulate:a", 1, .3).set_delay(.2)
+		flash_tween.connect("finished", make_alive)
 		
+func make_alive():
+	alive = true		
+
 func collect_item(item: Collectible):
 	inventory.add_item(item)
 	

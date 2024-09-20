@@ -15,6 +15,7 @@ var locked_to_target := false
 var laser_lock_tween: Tween
 var new_target_timer: SceneTreeTimer
 var damage_timer: SceneTreeTimer
+var last_know_pos: Vector2
 
 var is_casting := false:
 	set(value):
@@ -36,9 +37,12 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if target != null && locked_to_target && (new_target_timer == null || new_target_timer.time_left == 0):
+		last_know_pos = target.global_position
 		look_at(target.global_position)
 		is_casting = true
 	else:
+		if (last_know_pos != null):
+			look_at(last_know_pos)
 		is_casting = false
 		
 		

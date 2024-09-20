@@ -98,9 +98,8 @@ func take_damage(damage: int):
 		emit_signal("exploded", global_position, size, points, pickup)
 		queue_free()
 
-
 func _on_body_entered(body: Node2D) -> void:
-	if body is Player:
+	if body is Player && body.alive:
 		var player = body
 		player.die()
 
