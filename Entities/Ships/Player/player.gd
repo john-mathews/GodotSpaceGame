@@ -15,7 +15,6 @@ var rotation_speed := 200.0
 
 var alive := true
 var start_pos: Vector2
-var inventory: Inventory = Inventory.new()
 @export var starting_lives = 3
 
 var lives : int:
@@ -72,7 +71,7 @@ func make_alive():
 	alive = true		
 
 func collect_item(item: Collectible):
-	inventory.add_item(item)
+	PlayerInventory.add_item(item)
 	
 func _on_tractor_beam_get_player(beam: Node2D) -> void:
 	beam.set_player(self)

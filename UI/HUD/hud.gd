@@ -14,6 +14,3 @@ func init_lives(amount):
 	for i in amount:
 		var ul = uiLife_scene.instantiate()
 		lives.add_child(ul)
-		
-func _on_resource_collected(item: Collectible):
-	pass #probably need to connect this directly to inventory

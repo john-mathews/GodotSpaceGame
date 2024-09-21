@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+PlayerInventory="*res://UI/Inventory/inventory.tscn"
 GameState="*res://GameManagement/game_state.gd"
 
 [debug]

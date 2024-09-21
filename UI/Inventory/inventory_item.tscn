@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfuadwybgdarm"]
+
+[ext_resource type="Script" path="res://UI/Inventory/inventory_item.gd" id="1_35lwq"]
+[ext_resource type="Texture2D" uid="uid://djshnnfklp76e" path="res://Entities/Pickups/Assets/star_silver.png" id="2_3v830"]
+
+[node name="InventoryItem" type="Control"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_35lwq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 60.0
+offset_bottom = 60.0
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_3v830")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "1"
+horizontal_alignment = 1
