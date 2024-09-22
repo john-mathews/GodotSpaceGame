@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://cy8ahigyky653"]
+
+[ext_resource type="Texture2D" uid="uid://clti600xy4qba" path="res://Assets/Space/kenney_space-shooter-redux/PNG/Effects/star3.png" id="1_8lpf7"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s0f67"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 400.0
+emission_ring_inner_radius = 200.0
+direction = Vector3(1, 1, 0)
+spread = 180.0
+initial_velocity_min = -20.0
+initial_velocity_max = -10.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = -2.23517e-06
+radial_accel_min = -2.23517e-06
+radial_accel_max = -2.23517e-06
+tangential_accel_min = -2.23517e-06
+tangential_accel_max = -2.23517e-06
+
+[node name="TractorBeamItemEffect" type="GPUParticles2D"]
+modulate = Color(0.180392, 1, 0.196078, 0.431373)
+scale = Vector2(0.06, 0.06)
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_s0f67")
+texture = ExtResource("1_8lpf7")
+lifetime = 2.0
+preprocess = 4.0
+local_coords = true

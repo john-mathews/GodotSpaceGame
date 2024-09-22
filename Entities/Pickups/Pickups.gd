@@ -7,7 +7,7 @@ var min_speed = 10
 var speed = 20
 var caught := false
 var target: Node2D
-@onready var beam_effect := $TractorBeamEffect
+@onready var beam_effect := $TractorBeamItemEffect
 
 func _ready() -> void:
 	beam_effect.emitting = false
@@ -15,8 +15,6 @@ func _ready() -> void:
 	var sprite = Sprite2D.new()
 	sprite.texture = load(item.sprite_path)
 	add_child(sprite)
-	#var instance = item.scene.instantiate()
-	#add_child(instance)
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player && body.has_method("collect_item"):

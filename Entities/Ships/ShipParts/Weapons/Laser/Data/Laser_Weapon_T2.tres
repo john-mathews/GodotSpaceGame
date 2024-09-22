@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="LaserWeaponData" load_steps=2 format=3 uid="uid://2xog2tirasbb"]
+
+[ext_resource type="Script" path="res://Entities/Ships/ShipParts/Weapons/Laser/Data/LaserWeaponData.gd" id="1_677b5"]
+
+[resource]
+script = ExtResource("1_677b5")
+fire_rate = 0.6
+burst_amount = 2
+weapon_power = 2

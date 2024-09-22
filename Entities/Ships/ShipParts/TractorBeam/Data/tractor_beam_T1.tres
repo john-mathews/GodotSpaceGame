@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="TractorBeamData" load_steps=2 format=3 uid="uid://bhdy1pcsogtcr"]
+
+[ext_resource type="Script" path="res://Entities/Ships/ShipParts/TractorBeam/Data/TractorBeamData.gd" id="1_kwb61"]
+
+[resource]
+script = ExtResource("1_kwb61")
+beam_range = 50

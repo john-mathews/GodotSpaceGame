@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://b7kaelc24s4g2"]
+[gd_scene load_steps=11 format=3 uid="uid://b7kaelc24s4g2"]
 
 [ext_resource type="Script" path="res://Entities/Ships/Player/player.gd" id="1_t6wrp"]
 [ext_resource type="Texture2D" uid="uid://debcml6i8c7gj" path="res://Assets/Space/kenney_simple-space/PNG/Default/ship_L.png" id="1_v3anw"]
-[ext_resource type="PackedScene" uid="uid://cbyqwj6j1qq2y" path="res://UI/HUD/hud.tscn" id="3_1ck7j"]
-[ext_resource type="PackedScene" uid="uid://bstonx3djitwt" path="res://GameManagement/GameOver/game_over_screen.tscn" id="4_okhce"]
+[ext_resource type="Resource" uid="uid://dgypqjcwsto2u" path="res://Entities/Ships/ShipParts/Weapons/Laser/Data/Laser_Weapon_T1.tres" id="4_pcbyc"]
 [ext_resource type="PackedScene" uid="uid://6u2xgpe1ctno" path="res://Entities/Ships/ShipParts/MiningEquipment/mining_laser.tscn" id="5_1wtpg"]
 [ext_resource type="Script" path="res://Entities/Ships/ShipParts/Weapons/weapons.gd" id="5_8m5vj"]
 [ext_resource type="PackedScene" uid="uid://cdu1vjp2sut6j" path="res://Entities/Ships/ShipParts/Thruster/engine.tscn" id="5_fy4u1"]
+[ext_resource type="Resource" uid="uid://bm6gimwkh7xxt" path="res://Entities/Ships/ShipParts/MiningEquipment/Data/mining_laser_T1.tres" id="6_wx1d6"]
+[ext_resource type="Resource" uid="uid://bhdy1pcsogtcr" path="res://Entities/Ships/ShipParts/TractorBeam/Data/tractor_beam_T1.tres" id="7_mcrrj"]
 [ext_resource type="PackedScene" uid="uid://b1apj2mipsjn1" path="res://Entities/Ships/ShipParts/TractorBeam/tractor_beam.tscn" id="8_6ffj7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e3bck"]
@@ -29,17 +30,11 @@ shape = SubResource("CapsuleShape2D_e3bck")
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_speed = 10.0
 
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="HUD" parent="UI" instance=ExtResource("3_1ck7j")]
-
-[node name="GameOverScreen" parent="UI" instance=ExtResource("4_okhce")]
-visible = false
-
 [node name="ShipParts" type="Node2D" parent="."]
 
 [node name="Weapons" type="Node2D" parent="ShipParts"]
 script = ExtResource("5_8m5vj")
+data = ExtResource("4_pcbyc")
 
 [node name="Muzzle" type="Node2D" parent="ShipParts/Weapons"]
 position = Vector2(0, -16)
@@ -52,7 +47,9 @@ rotation = 3.14159
 z_index = 5
 z_as_relative = false
 rotation = -1.5708
+data = ExtResource("6_wx1d6")
 
 [node name="TractorBeam" parent="ShipParts" instance=ExtResource("8_6ffj7")]
+data = ExtResource("7_mcrrj")
 
 [connection signal="get_player" from="ShipParts/TractorBeam" to="." method="_on_tractor_beam_get_player"]

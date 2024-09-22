@@ -1,12 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbyqwj6j1qq2y"]
+[gd_scene load_steps=3 format=3 uid="uid://cbyqwj6j1qq2y"]
 
 [ext_resource type="Script" path="res://UI/HUD/hud.gd" id="1_0eoqd"]
-[ext_resource type="FontFile" uid="uid://dm6x4hikxlc0" path="res://Assets/Space/kenney_ui-pack-space-expansion/Font/Kenney Future.ttf" id="2_4732m"]
 [ext_resource type="PackedScene" uid="uid://q0hlxt14bo52" path="res://UI/Inventory/inventory_hud.tscn" id="3_dhvyr"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_ar65e"]
-font = ExtResource("2_4732m")
-font_size = 28
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -16,14 +11,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0eoqd")
-
-[node name="Score" type="Label" parent="."]
-visible = false
-layout_mode = 0
-offset_right = 309.0
-offset_bottom = 47.0
-text = "SCORE: 12345"
-label_settings = SubResource("LabelSettings_ar65e")
 
 [node name="Lives" type="HBoxContainer" parent="."]
 layout_mode = 1

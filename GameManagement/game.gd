@@ -3,7 +3,8 @@ extends Node2D
 @onready var lasers = $Lasers
 @onready var player = $Player
 @onready var asteroids = $Asteroids
-@onready var game_over = $Player/UI/GameOverScreen
+@onready var game_over = $UI/GameOverScreen
+@onready var hud = $UI/HUD
 @onready var player_spawn = $SpawnArea
 @onready var laser_sound = $LaserSound
 @onready var explode_sound = $AsteroidHitSound
@@ -16,9 +17,10 @@ var new_asteroid_scene := preload("res://Entities/SpaceObjects/Asteroid/rigid_as
 @export var asteroid_spawn_radius = 700
 
 func _ready():	
+	hud.init_lives(player.starting_health)
 	game_over.visible = false
 	player.weapon.connect("laser_shot", _on_player_laser_shot)
-	player.connect("died", _on_player_died)
+	player.connect("damaged", _on_player_damaged)
 	player_spawn.position = player.start_pos
 	spawn_asteroid(getAsteroidSpawnPos(), Asteroid.AsteroidSize.LARGE, 1)
 	
@@ -29,7 +31,7 @@ func _on_player_laser_shot(laser):
 	lasers.add_child(laser)
 	laser_sound.play()
 
-func _on_asteroid_exploded(pos: Vector2, size: Asteroid.AsteroidSize, points: int, drop: Pickup):
+func _on_asteroid_exploded(pos: Vector2, size: Asteroid.AsteroidSize, drop: Pickup):
 	explode_sound.play()
 	drop.global_position = pos
 	drop_list.call_deferred("add_child", drop)
@@ -54,14 +56,15 @@ func spawn_asteroid(pos, size, amount = 2):
 		newAsteroid.connect("exploded", _on_asteroid_exploded)
 		asteroids.call_deferred("add_child", newAsteroid)
 	
-func _on_player_died():
+func _on_player_damaged():
 	if !player.alive:
 		player_spawn.global_position = player.global_position
-		player.lives -= 1
+		hud.init_lives(player.health) 
 		player_die_sound.play()
-		if player.lives <= 0:
+		if player.health <= 0:
 			await get_tree().create_timer(1).timeout
 			game_over.visible = true
+			player.set_inactive()
 		else:
 			player.respawn()
 

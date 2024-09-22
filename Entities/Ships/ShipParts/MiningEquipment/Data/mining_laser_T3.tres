@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MiningLaserData" load_steps=2 format=3 uid="uid://cgx26c6sdhpc0"]
+
+[ext_resource type="Script" path="res://Entities/Ships/ShipParts/MiningEquipment/Data/MiningLaserData.gd" id="1_flb7g"]
+
+[resource]
+script = ExtResource("1_flb7g")
+mining_power = 3
+mining_rate = 0.5
+laser_range = 500

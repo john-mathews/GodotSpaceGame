@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://6u2xgpe1ctno"]
+[gd_scene load_steps=8 format=3 uid="uid://6u2xgpe1ctno"]
 
 [ext_resource type="Script" path="res://Entities/Ships/ShipParts/MiningEquipment/mining_laser.gd" id="1_3ncsl"]
+[ext_resource type="Resource" uid="uid://cgx26c6sdhpc0" path="res://Entities/Ships/ShipParts/MiningEquipment/Data/mining_laser_T3.tres" id="2_a7pve"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3gv6c"]
 radius = 500.0
@@ -47,6 +48,7 @@ collision_mask = 4
 hit_from_inside = true
 collide_with_areas = true
 script = ExtResource("1_3ncsl")
+data = ExtResource("2_a7pve")
 
 [node name="Line2D" type="Line2D" parent="."]
 points = PackedVector2Array(0, 0, 641, 0)

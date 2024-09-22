@@ -1,10 +1,10 @@
 class_name Asteroid extends RigidBody2D
 
 signal exploded(pos, size, points, drop)
-
-var movement_vector := Vector2(1, 0)
-
 enum AsteroidSize{LARGE, MEDIUM, SMALL, TINY}
+
+#region Variables
+var movement_vector := Vector2(1, 0)
 
 @export var size := AsteroidSize.LARGE
 @export var health := 5
@@ -36,6 +36,7 @@ var points: int:
 @onready var tiny_sprite_picker = $SpritePickers/RngSpritePickerListTiny
 @onready var health_bar = $ProgressBar
 var pickup: Pickup
+#endregion
 
 func _ready() -> void:
 	if size != AsteroidSize.LARGE:
@@ -95,7 +96,7 @@ func take_damage(damage: int):
 	update_health_bar()
 	if (health <= 0):
 		pickup.movement_vector = linear_velocity.normalized()
-		emit_signal("exploded", global_position, size, points, pickup)
+		emit_signal("exploded", global_position, size, pickup)
 		queue_free()
 
 func _on_body_entered(body: Node2D) -> void:

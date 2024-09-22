@@ -10,7 +10,7 @@ var item_count := 0:
 @onready var count_label = $VBoxContainer/Label
 
 func _ready() -> void:
-	var img = await load(item.sprite_path)
+	var img = load(item.sprite_path)
 	texture_rect.texture = img
 
 func set_label(count: int) -> void:

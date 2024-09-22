@@ -1,7 +1,8 @@
 class_name Player extends CharacterBody2D
 
-signal died()
+signal damaged()
 
+#region Variables
 var acceleration := 8.0
 var max_velocity := 300.0
 var rotation_speed := 200.0
@@ -11,30 +12,35 @@ var rotation_speed := 200.0
 @onready var thruster_effect = $ShipParts/Engine/GPUParticles2D
 @onready var thruster = $ShipParts/Engine
 @onready var weapon = $ShipParts/Weapons
-@onready var hud = $UI/HUD
+@onready var mining_laser = $ShipParts/MiningLaser
+@onready var tractor_beam = $ShipParts/TractorBeam
 
 var alive := true
 var start_pos: Vector2
-@export var starting_lives = 3
+@export var starting_health = 3
 
-var lives : int:
+var health : int:
 	set(value):
-		lives = value
-		hud.init_lives(value) 
+		health = value
+
+#endregion
 
 func _ready() -> void:
 	start_pos = global_position
-	lives = starting_lives
+	health = starting_health
 	acceleration = thruster.acceleration
 	max_velocity = thruster.max_velocity
 	rotation_speed = thruster.rotation_speed
 	
 func _process(delta: float) -> void:
-	if lives <= 0: return
+	if health <= 0: return
+	
 	if Input.is_action_pressed("shoot"):
 		weapon.shoot_pressed()
 
 func _physics_process(delta: float) -> void:
+	if health <= 0: return
+	
 	var input_vector := Vector2(0, Input.get_axis("move_forward","move_backward"))
 	velocity += input_vector.rotated(rotation) * acceleration
 	velocity = velocity.limit_length(max_velocity)
@@ -57,14 +63,18 @@ func _physics_process(delta: float) -> void:
 func die():
 	if alive:
 		alive = false
-		#cshape.set_deferred("disabled", true)
-		emit_signal("died")
+		health -= 1
+		emit_signal("damaged")
 
 func respawn():
 	if !alive:
 		var flash_tween = get_tree().create_tween().set_loops(5)
-		flash_tween.tween_property(self, "modulate:a", .1, .3)
-		flash_tween.tween_property(self, "modulate:a", 1, .3).set_delay(.2)
+		
+		flash_tween.tween_property(sprite, "modulate:a", .1, .3)
+		flash_tween.parallel().tween_property(thruster, "modulate:a", .1, .3)
+		
+		flash_tween.tween_property(sprite, "modulate:a", 1, .3)
+		flash_tween.parallel().tween_property(thruster, "modulate:a", 1, .3).set_delay(.2)
 		flash_tween.connect("finished", make_alive)
 		
 func make_alive():
@@ -75,3 +85,8 @@ func collect_item(item: Collectible):
 	
 func _on_tractor_beam_get_player(beam: Node2D) -> void:
 	beam.set_player(self)
+
+func set_inactive() -> void:
+	mining_laser.is_active = false
+	tractor_beam.is_active = false
+	thruster.visible = false

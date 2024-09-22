@@ -1,4 +1,4 @@
-class_name resource_lister
+class_name ResourceLister
 
 static func getResourcesByPath(path: String):
 	var dir = DirAccess.open(path)
