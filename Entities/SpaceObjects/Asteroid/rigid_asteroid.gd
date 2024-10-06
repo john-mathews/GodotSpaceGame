@@ -14,20 +14,6 @@ var speed := 100
 var texture_to_load: String
 var health_bar_offset: int
 
-var points: int:
-	get:
-		match size:
-			AsteroidSize.LARGE:
-				return 150
-			AsteroidSize.MEDIUM:
-				return 100
-			AsteroidSize.SMALL:
-				return 75
-			AsteroidSize.TINY:
-				return 50
-			_:
-				return 0
-
 @onready var sprite = $Sprite2D
 @onready var collision_shape = $CollisionShape2D
 @onready var large_sprite_picker = $SpritePickers/RngSpritePickerListLarge
@@ -47,36 +33,39 @@ func _ready() -> void:
 	var imported_resouce = load(resource_path)
 	pickup = preload("res://Entities/Pickups/Pickups.tscn").instantiate()
 	pickup.item = imported_resouce
+	var tier = get_tier()
 	
 	match size:
 		AsteroidSize.LARGE:
 			max_velocity = randi_range(40,80)
-			health = 5
-			mass = 50
+			health = 40 
+			mass = 80 
 			health_bar_offset = -50
 			sprite.texture = load(large_sprite_picker.select_sprite())
 			collision_shape.set_deferred("shape", preload("res://Entities/SpaceObjects/Asteroid/Resources/asteroid_collision_L.tres"))
 		AsteroidSize.MEDIUM:
 			max_velocity = randi_range(50, 100)
-			health = 3
-			mass = 30
+			health = 20
+			mass = 40
 			health_bar_offset = -20
 			sprite.texture = load(medium_sprite_picker.select_sprite())
 			collision_shape.set_deferred("shape", preload("res://Entities/SpaceObjects/Asteroid/Resources/asteroid_collision_M.tres"))
 		AsteroidSize.SMALL:
 			max_velocity = randi_range(70, 120)
-			health = 1
+			health = 10
 			mass = 20
 			health_bar_offset = -10
 			sprite.texture = load(small_sprite_picker.select_sprite())
 			collision_shape.set_deferred("shape", preload("res://Entities/SpaceObjects/Asteroid/Resources/asteroid_collision_S.tres"))
 		AsteroidSize.TINY:
-			health = 1
+			health = 5
 			mass = 10
 			max_velocity = randi_range(25, 150)
 			health_bar_offset = -5
 			sprite.texture = load(tiny_sprite_picker.select_sprite())
 			collision_shape.set_deferred("shape", preload("res://Entities/SpaceObjects/Asteroid/Resources/asteroid_collision_S.tres"))
+	health *= tier
+	mass *= tier
 	health_bar.max_value = health
 	update_health_bar()
 
@@ -106,3 +95,10 @@ func _on_body_entered(body: Node2D) -> void:
 
 func _on_off_screen_kill_timer_kill_parent() -> void:
 	queue_free()
+
+func get_tier()-> int:
+	var distance = global_position.distance_to(Vector2.ZERO)
+	print(distance)
+	var tier = ceil(distance/10000)
+	print(tier)
+	return tier

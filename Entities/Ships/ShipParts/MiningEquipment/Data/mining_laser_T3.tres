@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_flb7g")
-mining_power = 3
-mining_rate = 0.5
+mining_power = 15
+mining_rate = 1.0
 laser_range = 500

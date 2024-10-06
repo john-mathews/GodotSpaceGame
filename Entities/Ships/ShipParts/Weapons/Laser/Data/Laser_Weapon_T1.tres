@@ -6,4 +6,4 @@
 script = ExtResource("1_mq5eu")
 fire_rate = 0.8
 burst_amount = 1
-weapon_power = 1
+weapon_power = 10

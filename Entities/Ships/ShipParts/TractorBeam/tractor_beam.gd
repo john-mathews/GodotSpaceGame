@@ -7,17 +7,24 @@ var is_active:= true
 @onready var effect = $TractorBeamEffect
 
 var beam_range:= 100
-@export var data: TractorBeamData
+@export var data: TractorBeamData:
+	set(value):
+		data = value
+		set_data()
 
 func _ready() -> void:
-	print(data.beam_range)
-	if data != null:
-		range_collider.shape.radius = data.beam_range
-		#the effect is scaled down so that is why multiply
-		effect.process_material.emission_ring_radius = data.beam_range * 4
-		effect.process_material.emission_ring_inner_radius = data.beam_range * 2
-		
+	set_data()
 	get_player.emit(self)
+	
+func set_data():
+	if data != null:
+		if range_collider != null:
+			range_collider.shape.radius = data.beam_range
+		#the effect is scaled down so that is why multiply
+		if effect != null:
+			effect.process_material.emission_ring_radius = data.beam_range * 4
+			effect.process_material.emission_ring_inner_radius = data.beam_range * 2
+		
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area is Pickup && is_active:

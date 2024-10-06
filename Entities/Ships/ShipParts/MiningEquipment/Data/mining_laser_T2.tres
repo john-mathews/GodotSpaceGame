@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_eq85b")
-mining_power = 2
-mining_rate = 0.75
+mining_power = 10
+mining_rate = 1.0
 laser_range = 400

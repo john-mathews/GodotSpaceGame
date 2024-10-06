@@ -1,5 +1,6 @@
 extends RayCast2D
 
+#region Variables
 @onready var beam = $Line2D
 @onready var laser_range = $LaserRange
 @onready var laser_range_collider = $LaserRange/CollisionShape2D
@@ -9,7 +10,6 @@ extends RayCast2D
 
 var mining_power:= 1
 var mining_rate:= 1.0
-@export var data: MiningLaserData
 
 var target: Node2D #Node2D so we can make it anything
 var locked_to_target := false
@@ -33,13 +33,21 @@ var asteroids_in_range: Array[Node2D] = []:
 
 var cast_point: Vector2
 
-func _ready() -> void:
-	print(data.laser_range)
+@export var data: MiningLaserData:
+	set(value):
+		data = value
+		set_data()
+#endregion
+
+func set_data():
 	if data != null:
 		mining_power = data.mining_power
 		mining_rate = data.mining_rate
-		laser_range_collider.shape.radius = data.laser_range
-	
+		if laser_range_collider != null:
+			laser_range_collider.shape.radius = data.laser_range
+
+func _ready() -> void:
+	set_data()
 	target_position = Vector2(laser_range_collider.shape.radius, 0)
 
 func _process(delta: float) -> void:
@@ -95,6 +103,9 @@ func set_effects(toggle: bool, laser_pos:= Vector2.ZERO):
 func acquire_new_target():
 	for body in asteroids_in_range:
 		_on_laser_range_body_entered(body, true)
+		if damage_timer != null:
+			damage_timer = null
+			damage_timer = get_tree().create_timer(mining_rate)
 		continue
 		
 func damage_asteroid(asteroid: Asteroid):

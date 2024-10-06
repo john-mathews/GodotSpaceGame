@@ -6,4 +6,4 @@
 script = ExtResource("1_csrht")
 fire_rate = 0.4
 burst_amount = 3
-weapon_power = 3
+weapon_power = 30

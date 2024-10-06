@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ThrusterData" load_steps=2 format=3 uid="uid://1cr6qfkkba28"]
+
+[ext_resource type="Script" path="res://Entities/Ships/ShipParts/Thruster/Data/ThrusterData.gd" id="1_i3o7j"]
+
+[resource]
+script = ExtResource("1_i3o7j")
+acceleration = 10.0
+max_velocity = 500.0
+rotation_speed = 300.0
