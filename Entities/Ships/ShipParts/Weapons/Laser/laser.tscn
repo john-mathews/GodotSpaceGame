@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dfe4tgb3kv1tr"]
 
 [ext_resource type="Texture2D" uid="uid://dmslp1qpvmrqg" path="res://Assets/Space/kenney_space-shooter-redux/PNG/Lasers/laserBlue01.png" id="1_hqahe"]
-[ext_resource type="Script" path="res://Entities/Ships/ShipParts/Weapons/Laser/laser.gd" id="1_yswmq"]
+[ext_resource type="Script" uid="uid://cjbjdw377p3tn" path="res://Entities/Ships/ShipParts/Weapons/Laser/laser.gd" id="1_yswmq"]
 [ext_resource type="PackedScene" uid="uid://drhg7ronxchov" path="res://Common/OffScreenTimer/off_screen_kill_timer.tscn" id="3_wgcbj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wud20"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cdu1vjp2sut6j"]
 
-[ext_resource type="Script" path="res://Entities/Ships/ShipParts/Thruster/engine.gd" id="1_qxj5y"]
+[ext_resource type="Script" uid="uid://dmroasjey5dmh" path="res://Entities/Ships/ShipParts/Thruster/engine.gd" id="1_qxj5y"]
 
 [sub_resource type="Curve" id="Curve_w1b7u"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cmdl3h1y5g7yg"]
 
-[ext_resource type="Script" path="res://GameManagement/SpawnArea/spawn_area.gd" id="1_78dyl"]
+[ext_resource type="Script" uid="uid://cahg7iq7tfoyc" path="res://GameManagement/SpawnArea/spawn_area.gd" id="1_78dyl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ko4y6"]
 radius = 44.1022

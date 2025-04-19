@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://drhg7ronxchov"]
 
-[ext_resource type="Script" path="res://Common/OffScreenTimer/off_screen_kill_timer.gd" id="1_fqh2w"]
+[ext_resource type="Script" uid="uid://b3wmlxryhwtwm" path="res://Common/OffScreenTimer/off_screen_kill_timer.gd" id="1_fqh2w"]
 
 [node name="OffScreenKillTimer" type="VisibleOnScreenNotifier2D"]
 position = Vector2(-0.5, 9.53674e-07)

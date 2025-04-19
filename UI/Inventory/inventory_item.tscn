@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cfuadwybgdarm"]
 
-[ext_resource type="Script" path="res://UI/Inventory/inventory_item.gd" id="1_35lwq"]
+[ext_resource type="Script" uid="uid://dkq1vgsx1wtxf" path="res://UI/Inventory/inventory_item.gd" id="1_35lwq"]
 [ext_resource type="Texture2D" uid="uid://djshnnfklp76e" path="res://Entities/Pickups/Assets/star_silver.png" id="2_3v830"]
 
 [node name="InventoryItem" type="Control"]

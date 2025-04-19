@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b1apj2mipsjn1"]
 
-[ext_resource type="Script" path="res://Entities/Ships/ShipParts/TractorBeam/tractor_beam.gd" id="1_q5mv3"]
+[ext_resource type="Script" uid="uid://curkad2yvnnby" path="res://Entities/Ships/ShipParts/TractorBeam/tractor_beam.gd" id="1_q5mv3"]
 [ext_resource type="Resource" uid="uid://eg7b511hd0a0" path="res://Entities/Ships/ShipParts/TractorBeam/Data/tractor_beam_T2.tres" id="2_xskrb"]
 [ext_resource type="PackedScene" uid="uid://d4mmaeb4yf15u" path="res://Entities/Ships/ShipParts/TractorBeam/tractor_beam_effect.tscn" id="3_3ysyg"]
 

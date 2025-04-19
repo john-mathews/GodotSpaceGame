@@ -14,7 +14,7 @@ extends Node2D
 
 var new_asteroid_scene := preload("res://Entities/SpaceObjects/Asteroid/rigid_asteroid.tscn")
 		
-@export var asteroid_spawn_radius = 700
+@export var asteroid_spawn_radius = 800
 
 func _ready():	
 	hud.init_lives(player.starting_health)
@@ -45,14 +45,13 @@ func _on_asteroid_exploded(pos: Vector2, size: Asteroid.AsteroidSize, drop: Pick
 		Asteroid.AsteroidSize.TINY:
 			pass
 
-	
 func spawn_asteroid(pos, size, amount = 2):
 	for i in amount:
 		var newAsteroid = new_asteroid_scene.instantiate()
 		newAsteroid.global_position = pos
 		newAsteroid.size = size
 		if size == Asteroid.AsteroidSize.LARGE: 
-			newAsteroid.look_at(player.global_position + player.velocity)
+			newAsteroid.look_at(player.global_position + (player.velocity.normalized() * randf_range(0, asteroid_spawn_radius)))
 		newAsteroid.connect("exploded", _on_asteroid_exploded)
 		asteroids.call_deferred("add_child", newAsteroid)
 	
@@ -68,13 +67,19 @@ func _on_player_damaged():
 		else:
 			player.respawn()
 
-
 func _on_asteroid_spawn_timer_timeout() -> void:
 	spawn_asteroid(getAsteroidSpawnPos(), Asteroid.AsteroidSize.LARGE, 1)
-	if spawn_timer.wait_time > 1: spawn_timer.wait_time -= 1
+	spawn_timer.wait_time = randf_range(.5, 2.0)
 
 func getAsteroidSpawnPos():
-	var rand_rotate = randf_range(0, 2 * PI)
-	var rotated_vector = Vector2(1,1).rotated(rand_rotate).normalized()
-	var point = (rotated_vector * asteroid_spawn_radius) + player.global_position 
+	# limit below 1 so they aren't a perfect line
+	print('break')
+	print(player.rotation)
+	var movement_angle = player.rotation + player.get_angle_to(player.velocity.normalized() + player.global_position)
+	print(movement_angle)
+	var velocity_pct = clamp(abs(player.velocity.length() / player.thruster.max_velocity), 0, .75) 
+	var rotation_range = PI - (velocity_pct * PI) 
+	var rand_rotate = movement_angle + randf_range(-rotation_range, rotation_range)
+	var rotated_vector = Vector2(0,-1).rotated(rand_rotate).normalized()
+	var point = (rotated_vector * asteroid_spawn_radius) + player.global_position
 	return point

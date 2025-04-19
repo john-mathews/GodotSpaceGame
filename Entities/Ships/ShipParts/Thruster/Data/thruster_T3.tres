@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ThrusterData" load_steps=2 format=3 uid="uid://1cr6qfkkba28"]
 
-[ext_resource type="Script" path="res://Entities/Ships/ShipParts/Thruster/Data/ThrusterData.gd" id="1_i3o7j"]
+[ext_resource type="Script" uid="uid://b0ecn2t6u7m6b" path="res://Entities/Ships/ShipParts/Thruster/Data/ThrusterData.gd" id="1_i3o7j"]
 
 [resource]
 script = ExtResource("1_i3o7j")

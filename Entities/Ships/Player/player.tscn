@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=3 uid="uid://b7kaelc24s4g2"]
 
-[ext_resource type="Script" path="res://Entities/Ships/Player/player.gd" id="1_t6wrp"]
+[ext_resource type="Script" uid="uid://dx5hsycq2kx44" path="res://Entities/Ships/Player/player.gd" id="1_t6wrp"]
 [ext_resource type="Texture2D" uid="uid://debcml6i8c7gj" path="res://Assets/Space/kenney_simple-space/PNG/Default/ship_L.png" id="1_v3anw"]
 [ext_resource type="PackedScene" uid="uid://6u2xgpe1ctno" path="res://Entities/Ships/ShipParts/MiningEquipment/mining_laser.tscn" id="5_1wtpg"]
-[ext_resource type="Script" path="res://Entities/Ships/ShipParts/Weapons/weapons.gd" id="5_8m5vj"]
+[ext_resource type="Script" uid="uid://currkpiq4ptb0" path="res://Entities/Ships/ShipParts/Weapons/weapons.gd" id="5_8m5vj"]
 [ext_resource type="PackedScene" uid="uid://cdu1vjp2sut6j" path="res://Entities/Ships/ShipParts/Thruster/engine.tscn" id="5_fy4u1"]
 [ext_resource type="Resource" uid="uid://dy1gx80otthvj" path="res://Entities/Ships/ShipParts/Thruster/Data/thruster_T1.tres" id="6_6q7yq"]
 [ext_resource type="Resource" uid="uid://bm6gimwkh7xxt" path="res://Entities/Ships/ShipParts/MiningEquipment/Data/mining_laser_T1.tres" id="6_wx1d6"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dqosav0j357mx"]
 
-[ext_resource type="Script" path="res://Entities/Pickups/Pickups.gd" id="1_7lbqs"]
+[ext_resource type="Script" uid="uid://bsry6s6odemvv" path="res://Entities/Pickups/Pickups.gd" id="1_7lbqs"]
 [ext_resource type="PackedScene" uid="uid://cy8ahigyky653" path="res://Entities/Ships/ShipParts/TractorBeam/tractor_beam_item_effect.tscn" id="3_xo38j"]
 [ext_resource type="PackedScene" uid="uid://drhg7ronxchov" path="res://Common/OffScreenTimer/off_screen_kill_timer.tscn" id="3_y6vvw"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cbyqwj6j1qq2y"]
 
-[ext_resource type="Script" path="res://UI/HUD/hud.gd" id="1_0eoqd"]
+[ext_resource type="Script" uid="uid://bi8xnddqg17vf" path="res://UI/HUD/hud.gd" id="1_0eoqd"]
 [ext_resource type="PackedScene" uid="uid://q0hlxt14bo52" path="res://UI/Inventory/inventory_hud.tscn" id="3_dhvyr"]
 
 [node name="HUD" type="Control"]

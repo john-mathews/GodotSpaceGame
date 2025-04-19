@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bstonx3djitwt"]
 
-[ext_resource type="Script" path="res://GameManagement/GameOver/game_over_screen.gd" id="1_0u1yy"]
+[ext_resource type="Script" uid="uid://d03jfghiq3mva" path="res://GameManagement/GameOver/game_over_screen.gd" id="1_0u1yy"]
 [ext_resource type="FontFile" uid="uid://da2l5exq7inxk" path="res://Assets/Space/kenney_space-shooter-redux/Bonus/kenvector_future.ttf" id="1_d1mej"]
 [ext_resource type="FontFile" uid="uid://dm6x4hikxlc0" path="res://Assets/Space/kenney_ui-pack-space-expansion/Font/Kenney Future.ttf" id="2_i4qyh"]
 

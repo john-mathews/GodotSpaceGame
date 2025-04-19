@@ -37,21 +37,21 @@ func _ready() -> void:
 	
 	match size:
 		AsteroidSize.LARGE:
-			max_velocity = randi_range(40,80)
+			max_velocity = randi_range(50,100)
 			health = 40 
 			mass = 80 
 			health_bar_offset = -50
 			sprite.texture = load(large_sprite_picker.select_sprite())
 			collision_shape.set_deferred("shape", preload("res://Entities/SpaceObjects/Asteroid/Resources/asteroid_collision_L.tres"))
 		AsteroidSize.MEDIUM:
-			max_velocity = randi_range(50, 100)
+			max_velocity = randi_range(75, 125)
 			health = 20
 			mass = 40
 			health_bar_offset = -20
 			sprite.texture = load(medium_sprite_picker.select_sprite())
 			collision_shape.set_deferred("shape", preload("res://Entities/SpaceObjects/Asteroid/Resources/asteroid_collision_M.tres"))
 		AsteroidSize.SMALL:
-			max_velocity = randi_range(70, 120)
+			max_velocity = randi_range(100, 150)
 			health = 10
 			mass = 20
 			health_bar_offset = -10
@@ -98,7 +98,5 @@ func _on_off_screen_kill_timer_kill_parent() -> void:
 
 func get_tier()-> int:
 	var distance = global_position.distance_to(Vector2.ZERO)
-	print(distance)
 	var tier = ceil(distance/10000)
-	print(tier)
 	return tier

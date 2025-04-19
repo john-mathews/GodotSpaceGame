@@ -1,6 +1,6 @@
 [gd_scene load_steps=27 format=3 uid="uid://bjpvauv4yq038"]
 
-[ext_resource type="Script" path="res://Entities/SpaceObjects/Asteroid/rigid_asteroid.gd" id="1_akax7"]
+[ext_resource type="Script" uid="uid://cymrlhmk5j6qh" path="res://Entities/SpaceObjects/Asteroid/rigid_asteroid.gd" id="1_akax7"]
 [ext_resource type="Shape2D" uid="uid://j0p4ejolnb1q" path="res://Entities/SpaceObjects/Asteroid/Resources/asteroid_collision_L.tres" id="2_pwjwx"]
 [ext_resource type="PackedScene" uid="uid://drhg7ronxchov" path="res://Common/OffScreenTimer/off_screen_kill_timer.tscn" id="3_jtb3i"]
 [ext_resource type="PackedScene" uid="uid://d2ngm8f08flqt" path="res://Common/SpritePicker/rng_sprite_picker_list.tscn" id="4_1pj1u"]
