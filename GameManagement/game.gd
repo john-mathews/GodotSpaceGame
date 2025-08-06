@@ -1,4 +1,4 @@
-extends Node2D
+class_name Game extends Node2D
 
 @onready var lasers = $Lasers
 @onready var player = $Player
@@ -14,7 +14,8 @@ extends Node2D
 
 var new_asteroid_scene := preload("res://Entities/SpaceObjects/Asteroid/rigid_asteroid.tscn")
 		
-@export var asteroid_spawn_radius = 800
+@export var asteroid_spawn_radius := 800.0
+@export var asteroid_spawn_max_velocity := 50.0
 
 func _ready():	
 	hud.init_lives(player.starting_health)
@@ -50,6 +51,7 @@ func spawn_asteroid(pos, size, amount = 2):
 		var newAsteroid = new_asteroid_scene.instantiate()
 		newAsteroid.global_position = pos
 		newAsteroid.size = size
+		newAsteroid.max_velocity = asteroid_spawn_max_velocity
 		if size == Asteroid.AsteroidSize.LARGE: 
 			newAsteroid.look_at(player.global_position + (player.velocity.normalized() * randf_range(0, asteroid_spawn_radius)))
 		newAsteroid.connect("exploded", _on_asteroid_exploded)
