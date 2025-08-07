@@ -12,12 +12,15 @@
 
 [node name="RunnerMode" type="Node2D"]
 script = ExtResource("1_tnvlh")
-asteroid_spawn_max_velocity = 1.0
+asteroid_spawn_radius = 1200.0
+asteroid_spawn_max_velocity = 30.0
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_d6pa6")]
 
 [node name="Player" parent="." instance=ExtResource("2_xrjfj")]
 rotation = 1.5708
+mining_laser_level = 2
+tractor_beam_level = 2
 
 [node name="Asteroids" type="Node2D" parent="."]
 
@@ -26,7 +29,6 @@ rotation = 1.5708
 [node name="Drops" type="Node2D" parent="."]
 
 [node name="SpawnArea" parent="." instance=ExtResource("4_2nad2")]
-position = Vector2(642, 361)
 collision_layer = 16
 collision_mask = 4
 

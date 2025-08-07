@@ -38,21 +38,22 @@ func _on_asteroid_exploded(pos: Vector2, size: Asteroid.AsteroidSize, drop: Pick
 	drop_list.call_deferred("add_child", drop)
 	match size:
 		Asteroid.AsteroidSize.LARGE:
-			spawn_asteroid(pos, Asteroid.AsteroidSize.MEDIUM, randi_range(2,3))
+			spawn_asteroid(pos, Asteroid.AsteroidSize.MEDIUM, randi_range(1,2))
 		Asteroid.AsteroidSize.MEDIUM:
-			spawn_asteroid(pos, Asteroid.AsteroidSize.SMALL, randi_range(2,5))
+			spawn_asteroid(pos, Asteroid.AsteroidSize.SMALL, randi_range(2,3))
 		Asteroid.AsteroidSize.SMALL:
-			spawn_asteroid(pos, Asteroid.AsteroidSize.TINY, randi_range(3,6)) 
+			pass
+			#spawn_asteroid(pos, Asteroid.AsteroidSize.TINY, randi_range(3,6)) 
 		Asteroid.AsteroidSize.TINY:
 			pass
 
-func spawn_asteroid(pos, size, amount = 2):
+func spawn_asteroid(pos: Vector2, size: Asteroid.AsteroidSize, amount := 2):
 	for i in amount:
 		var newAsteroid = new_asteroid_scene.instantiate()
 		newAsteroid.global_position = pos
 		newAsteroid.size = size
-		newAsteroid.max_velocity = asteroid_spawn_max_velocity
 		if size == Asteroid.AsteroidSize.LARGE: 
+			newAsteroid.max_velocity = asteroid_spawn_max_velocity
 			newAsteroid.look_at(player.global_position + (player.velocity.normalized() * randf_range(0, asteroid_spawn_radius)))
 		newAsteroid.connect("exploded", _on_asteroid_exploded)
 		asteroids.call_deferred("add_child", newAsteroid)
@@ -63,7 +64,7 @@ func _on_player_damaged():
 		hud.init_lives(player.health) 
 		player_die_sound.play()
 		if player.health <= 0:
-			await get_tree().create_timer(1).timeout
+			await get_tree().create_timer(.3).timeout
 			game_over.visible = true
 			player.set_inactive()
 		else:
@@ -71,14 +72,11 @@ func _on_player_damaged():
 
 func _on_asteroid_spawn_timer_timeout() -> void:
 	spawn_asteroid(getAsteroidSpawnPos(), Asteroid.AsteroidSize.LARGE, 1)
-	spawn_timer.wait_time = randf_range(.5, 2.0)
+	spawn_timer.wait_time = randf_range(.2, 2.0)
 
 func getAsteroidSpawnPos():
 	# limit below 1 so they aren't a perfect line
-	print('break')
-	print(player.rotation)
 	var movement_angle = player.rotation + player.get_angle_to(player.velocity.normalized() + player.global_position)
-	print(movement_angle)
 	var velocity_pct = clamp(abs(player.velocity.length() / player.thruster.max_velocity), 0, .75) 
 	var rotation_range = PI - (velocity_pct * PI) 
 	var rand_rotate = movement_angle + randf_range(-rotation_range, rotation_range)

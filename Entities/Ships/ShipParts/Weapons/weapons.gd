@@ -19,19 +19,20 @@ func set_data():
 		fire_rate = laser_data.fire_rate
 		burst_amount = laser_data.burst_amount
 			
-func shoot_pressed() -> void:
+func shoot_pressed(vel: Vector2 = Vector2.ZERO) -> void:
 	if !shoot_cd:
 		shoot_cd = true
 		for i in burst_amount:
-			shoot_laser()
+			shoot_laser(vel)
 			await get_tree().create_timer(.1).timeout
 		await get_tree().create_timer(fire_rate).timeout
 		shoot_cd = false
 
-func shoot_laser():
+func shoot_laser(init_velocity: Vector2):
 	var laser_inst = laser_scene.instantiate()
 	if laser_data != null:
 		laser_inst.attack_power = laser_data.weapon_power
 	laser_inst.global_position = muzzle.global_position
 	laser_inst.rotation = global_rotation
+	laser_inst.ship_velocity = init_velocity
 	emit_signal("laser_shot", laser_inst)

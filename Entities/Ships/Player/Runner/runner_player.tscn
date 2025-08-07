@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://15ox3grj7e4a"]
+[gd_scene load_steps=15 format=3 uid="uid://15ox3grj7e4a"]
 
 [ext_resource type="Script" uid="uid://dtfdchjkrp4od" path="res://Entities/Ships/Player/Runner/runner_player.gd" id="1_go6pf"]
 [ext_resource type="Texture2D" uid="uid://debcml6i8c7gj" path="res://Assets/Space/kenney_simple-space/PNG/Default/ship_L.png" id="2_3dsv5"]
 [ext_resource type="Script" uid="uid://currkpiq4ptb0" path="res://Entities/Ships/ShipParts/Weapons/weapons.gd" id="3_hexka"]
+[ext_resource type="Resource" uid="uid://dgypqjcwsto2u" path="res://Entities/Ships/ShipParts/Weapons/Laser/Data/Laser_Weapon_T1.tres" id="4_okruf"]
 [ext_resource type="PackedScene" uid="uid://cdu1vjp2sut6j" path="res://Entities/Ships/ShipParts/Thruster/engine.tscn" id="4_pajyk"]
 [ext_resource type="Resource" uid="uid://dy1gx80otthvj" path="res://Entities/Ships/ShipParts/Thruster/Data/thruster_T1.tres" id="5_okruf"]
 [ext_resource type="PackedScene" uid="uid://6u2xgpe1ctno" path="res://Entities/Ships/ShipParts/MiningEquipment/mining_laser.tscn" id="6_51fcn"]
@@ -10,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b1apj2mipsjn1" path="res://Entities/Ships/ShipParts/TractorBeam/tractor_beam.tscn" id="8_o3kgu"]
 [ext_resource type="Resource" uid="uid://bhdy1pcsogtcr" path="res://Entities/Ships/ShipParts/TractorBeam/Data/tractor_beam_T1.tres" id="9_xk18g"]
 [ext_resource type="PackedScene" uid="uid://cbyqwj6j1qq2y" path="res://UI/HUD/hud.tscn" id="10_hexka"]
+[ext_resource type="PackedScene" uid="uid://1topcg0rojrd" path="res://Entities/Ships/ShipParts/Shield/shield.tscn" id="11_okruf"]
 [ext_resource type="PackedScene" uid="uid://bstonx3djitwt" path="res://GameManagement/GameOver/game_over_screen.tscn" id="11_pajyk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_58ctf"]
@@ -20,8 +22,7 @@ height = 24.0
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_go6pf")
-mining_laser_level = 1
-tractor_beam_level = 1
+starting_health = 1
 metadata/_custom_type_script = "uid://dx5hsycq2kx44"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -45,6 +46,7 @@ drag_bottom_margin = 0.3
 
 [node name="Weapons" type="Node2D" parent="ShipParts"]
 script = ExtResource("3_hexka")
+laser_data = ExtResource("4_okruf")
 
 [node name="Muzzle" type="Node2D" parent="ShipParts/Weapons"]
 position = Vector2(0, -16)
@@ -63,9 +65,13 @@ data = ExtResource("7_sde8u")
 [node name="TractorBeam" parent="ShipParts" instance=ExtResource("8_o3kgu")]
 data = ExtResource("9_xk18g")
 
+[node name="Shield" parent="ShipParts" instance=ExtResource("11_okruf")]
+
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="HUD" parent="UI" instance=ExtResource("10_hexka")]
 
 [node name="GameOverScreen" parent="UI" instance=ExtResource("11_pajyk")]
 visible = false
+
+[connection signal="body_entered" from="ShipParts/Shield" to="." method="_on_shield_body_entered"]

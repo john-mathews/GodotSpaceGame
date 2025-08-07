@@ -34,7 +34,7 @@ func _process(delta: float) -> void:
 	if health <= 0: return
 	
 	if Input.is_action_pressed("shoot"):
-		weapon.shoot_pressed()
+		weapon.shoot_pressed(velocity)
 
 func _physics_process(delta: float) -> void:
 	if health <= 0: return
@@ -56,6 +56,9 @@ func _physics_process(delta: float) -> void:
 		
 	var collision = move_and_collide(velocity * delta)
 	if alive && collision != null && collision.get_collider() is Asteroid:
+		var collider := collision.get_collider() as Asteroid
+		collider.apply_force(velocity - collider.linear_velocity, collision.get_position())
+		velocity.bounce(collision.get_normal())
 		die()
 	
 func die():

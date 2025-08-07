@@ -28,7 +28,7 @@ func _ready() -> void:
 	if size != AsteroidSize.LARGE:
 		rotation = randf_range(0, 2 * PI)
 	sprite.rotation = randf_range(0, 2 * PI)
-	linear_velocity = movement_vector.rotated(rotation) * max_velocity
+	linear_velocity = movement_vector.rotated(rotation) * randf_range(max_velocity/2, max_velocity)
 	var resource_path = GameState.star_drop_resource_paths.pick_random()
 	var imported_resouce = load(resource_path)
 	pickup = preload("res://Entities/Pickups/Pickups.tscn").instantiate()
@@ -38,21 +38,21 @@ func _ready() -> void:
 	match size:
 		AsteroidSize.LARGE:
 			max_velocity = randi_range(50,100)
-			health = 40 
+			health = 25
 			mass = 80 
 			health_bar_offset = -50
 			sprite.texture = load(large_sprite_picker.select_sprite())
 			collision_shape.set_deferred("shape", preload("res://Entities/SpaceObjects/Asteroid/Resources/asteroid_collision_L.tres"))
 		AsteroidSize.MEDIUM:
 			max_velocity = randi_range(75, 125)
-			health = 20
+			health = 10
 			mass = 40
 			health_bar_offset = -20
 			sprite.texture = load(medium_sprite_picker.select_sprite())
 			collision_shape.set_deferred("shape", preload("res://Entities/SpaceObjects/Asteroid/Resources/asteroid_collision_M.tres"))
 		AsteroidSize.SMALL:
 			max_velocity = randi_range(100, 150)
-			health = 10
+			health = 3
 			mass = 20
 			health_bar_offset = -10
 			sprite.texture = load(small_sprite_picker.select_sprite())
@@ -76,6 +76,11 @@ func position_health_bar():
 	health_bar.rotation = -rotation
 
 func _physics_process(delta: float) -> void:
+	if global_position.y >= 400:
+		linear_velocity.y = min(abs(linear_velocity.y) * -1, -25)
+	elif global_position.y <= -400:
+		linear_velocity.y = min(abs(linear_velocity.y), 25)
+		
 	var movement = linear_velocity.normalized() * max_velocity * delta
 	position_health_bar()
 	apply_central_impulse(movement)

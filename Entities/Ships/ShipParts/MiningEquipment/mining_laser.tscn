@@ -46,7 +46,6 @@ color_ramp = SubResource("GradientTexture1D_vb2ol")
 target_position = Vector2(1000, 0)
 collision_mask = 4
 hit_from_inside = true
-collide_with_areas = true
 script = ExtResource("1_3ncsl")
 data = ExtResource("2_a7pve")
 
@@ -67,28 +66,28 @@ shape = SubResource("CircleShape2D_3gv6c")
 visible = false
 z_index = 5
 amount = 500
-process_material = SubResource("ParticleProcessMaterial_pnexb")
 lifetime = 0.4
 local_coords = true
+process_material = SubResource("ParticleProcessMaterial_pnexb")
 
 [node name="EndEffect" type="GPUParticles2D" parent="Effects"]
 visible = false
 z_index = 5
 amount = 500
-process_material = SubResource("ParticleProcessMaterial_pnexb")
 speed_scale = 1.5
 explosiveness = 0.25
 local_coords = true
+process_material = SubResource("ParticleProcessMaterial_pnexb")
 
 [node name="DamageEffect" type="GPUParticles2D" parent="Effects"]
 visible = false
 z_index = 5
 emitting = false
 amount = 1000
-process_material = SubResource("ParticleProcessMaterial_hbdqd")
 one_shot = true
 explosiveness = 1.0
 local_coords = true
+process_material = SubResource("ParticleProcessMaterial_hbdqd")
 
 [connection signal="area_entered" from="LaserRange" to="." method="_on_laser_range_area_entered"]
 [connection signal="area_exited" from="LaserRange" to="." method="_on_laser_range_area_exited"]

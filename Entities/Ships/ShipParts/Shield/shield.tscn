@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://1topcg0rojrd"]
+
+[ext_resource type="Texture2D" uid="uid://cklgcl35rthsm" path="res://Assets/Space/kenney_simple-space/PNG/Retina/meteor_large.png" id="1_cqekr"]
+[ext_resource type="Script" uid="uid://biejk84de0uj5" path="res://Entities/Ships/ShipParts/Shield/shield.gd" id="1_uamus"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_drrcs"]
+radius = 40.0
+
+[node name="Shield" type="Area2D"]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_uamus")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_drrcs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 1, 1, 0.184314)
+texture = ExtResource("1_cqekr")
