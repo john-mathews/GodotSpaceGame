@@ -1,10 +1,17 @@
 class_name RunnerPlayer extends Player
 
-const INIT_ACCELERATION := 10.0
+const INIT_ACCELERATION := 5.0
 var accleration := INIT_ACCELERATION
 const STRAFE := 250.0
 @onready var camera := $Camera2D
 @onready var shield := $ShipParts/Shield
+
+func _ready() -> void:
+	super()
+	
+	accleration = 25
+	await get_tree().create_timer(5.0).timeout
+	accleration = INIT_ACCELERATION
 
 func _process(delta: float) -> void:
 	if health <= 0: return

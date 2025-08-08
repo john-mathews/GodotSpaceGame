@@ -53,13 +53,20 @@ func _physics_process(delta: float) -> void:
 		rotate(deg_to_rad(thruster.rotation_speed*delta))
 	elif Input.is_action_pressed("rotate_counter_clockwise"):
 		rotate(deg_to_rad(thruster.rotation_speed*delta*-1))
-		
-	var collision = move_and_collide(velocity * delta)
-	if alive && collision != null && collision.get_collider() is Asteroid:
-		var collider := collision.get_collider() as Asteroid
-		collider.apply_force(velocity - collider.linear_velocity, collision.get_position())
-		velocity.bounce(collision.get_normal())
-		die()
+	
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		print("Collided with: ", collision.get_collider().get_class())
+		if alive && collision != null && collision.get_collider() is RigidBody2D:
+			#var collider := collision.get_collider() as Asteroid
+			#collider.apply_force(velocity - collider.linear_velocity, collision.get_position())
+			var angle := collision.get_angle()
+			print(angle)
+			#velocity.bounce(normal)
+			if abs(angle) < 60:
+				die()
+	move_and_slide()
+
 	
 func die():
 	if alive:

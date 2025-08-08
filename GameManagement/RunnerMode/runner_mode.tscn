@@ -19,7 +19,6 @@ asteroid_spawn_max_velocity = 30.0
 
 [node name="Player" parent="." instance=ExtResource("2_xrjfj")]
 rotation = 1.5708
-mining_laser_level = 2
 tractor_beam_level = 2
 
 [node name="Asteroids" type="Node2D" parent="."]

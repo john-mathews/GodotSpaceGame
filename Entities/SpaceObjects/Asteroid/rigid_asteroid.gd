@@ -76,9 +76,9 @@ func position_health_bar():
 	health_bar.rotation = -rotation
 
 func _physics_process(delta: float) -> void:
-	if global_position.y >= 400:
+	if global_position.y >= 403: #3 pixel buffer
 		linear_velocity.y = min(abs(linear_velocity.y) * -1, -25)
-	elif global_position.y <= -400:
+	elif global_position.y <= -403:
 		linear_velocity.y = min(abs(linear_velocity.y), 25)
 		
 	var movement = linear_velocity.normalized() * max_velocity * delta
@@ -94,9 +94,10 @@ func take_damage(damage: int):
 		queue_free()
 
 func _on_body_entered(body: Node2D) -> void:
-	if body is Player && body.alive:
-		var player = body
-		player.die()
+	pass
+	#if body is Player && body.alive:
+		#var player = body
+		#player.die()
 
 func _on_off_screen_kill_timer_kill_parent() -> void:
 	queue_free()

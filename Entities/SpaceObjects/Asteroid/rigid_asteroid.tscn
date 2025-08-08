@@ -37,7 +37,6 @@ collision_mask = 30
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_bpt48")
 gravity_scale = 0.0
-contact_monitor = true
 max_contacts_reported = 5
 script = ExtResource("1_akax7")
 
@@ -130,5 +129,4 @@ offset_right = 16.0
 offset_bottom = 3.0
 pivot_offset = Vector2(16, 2)
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="killParent" from="OffScreenKillTimer" to="." method="_on_off_screen_kill_timer_kill_parent"]
