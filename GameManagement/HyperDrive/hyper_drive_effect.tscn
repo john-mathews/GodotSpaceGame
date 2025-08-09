@@ -2,8 +2,8 @@
 
 [sub_resource type="Curve" id="Curve_l7gqd"]
 _limits = [-50.0, 50.0, 0.0, 1.0]
-_data = [Vector2(0, 50), 0.0, 0.0, 0, 0, Vector2(0.288136, 31.4286), -123.71, -123.71, 0, 0, Vector2(1, -50), 0.0, 0.0, 0, 0]
-point_count = 3
+_data = [Vector2(0, 28.6635), 0.0, -71.1683, 0, 0, Vector2(0.236686, -9.43728), 0.0, 0.0, 0, 0, Vector2(0.857988, 24.0914), -123.71, -123.71, 0, 0, Vector2(1, -50), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="CurveTexture" id="CurveTexture_lqexq"]
 curve = SubResource("Curve_l7gqd")
@@ -17,14 +17,14 @@ emission_ring_radius = 1.0
 emission_ring_inner_radius = 0.0
 emission_ring_cone_angle = 90.0
 spread = 180.0
-initial_velocity_min = 10.0
-initial_velocity_max = 50.0
+initial_velocity_min = 1.0
+initial_velocity_max = 10.0
 gravity = Vector3(0, 0, 0)
 linear_accel_min = 0.999998
-linear_accel_max = 40.0
+linear_accel_max = 5.0
 linear_accel_curve = SubResource("CurveTexture_lqexq")
 
 [node name="HyperDrive" type="GPUParticles2D"]
-amount = 800
-process_material = SubResource("ParticleProcessMaterial_qd3h7")
+amount = 400
 lifetime = 5.0
+process_material = SubResource("ParticleProcessMaterial_qd3h7")

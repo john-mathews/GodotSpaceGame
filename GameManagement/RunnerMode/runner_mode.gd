@@ -5,9 +5,13 @@ var game_seconds := 0.0
 @export var init_max_spawn := 5.0
 var min_min_time := 1.0
 var min_max_time := 5.0
+var max_distance := 0.0
 
 func _process(delta: float) -> void:
 	game_seconds += delta
+	if player.global_position.x > max_distance:
+		max_distance = player.global_position.x
+		hud.set_distance_label(max_distance)
 
 func getAsteroidSpawnPos():
 	var point = (Vector2.RIGHT * asteroid_spawn_radius) + player.global_position
