@@ -3,7 +3,9 @@ class_name RunnerPlayer extends Player
 const INIT_ACCELERATION := 5.0
 var accleration := INIT_ACCELERATION
 var max_speed_achieved := 0.0
+const STRAFE_ACCEL := 2.0
 const STRAFE := 250.0
+const BOUNCE_VECTOR := Vector2(1.5, 1.0)
 @onready var camera := $Camera2D
 @onready var shield := $ShipParts/Shield
 #using vectors to store values of speed acceleration map
@@ -17,8 +19,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if health <= 0: return
 	
-	#if !weapon.shoot_cd:
-		#weapon.shoot_pressed(velocity)
+	if !weapon.shoot_cd:
+		weapon.shoot_pressed(velocity)
 
 func _physics_process(delta: float) -> void:
 	if velocity.x < max_speed_achieved:
@@ -34,11 +36,13 @@ func _physics_process(delta: float) -> void:
 	
 	var input_vector := Vector2(0, Input.get_axis("move_forward","move_backward"))
 	if position.y > (camera.limit_top + 25) && input_vector.y < 0:
-		velocity.y = input_vector.y * STRAFE 
+		if abs(velocity.y) < STRAFE:
+			velocity.y += input_vector.y * STRAFE * delta * STRAFE_ACCEL
 	elif position.y < (camera.limit_bottom - 25) && input_vector.y > 0:
-		velocity.y = input_vector.y * STRAFE 
+		if abs(velocity.y) < STRAFE:
+			velocity.y += input_vector.y * STRAFE * delta * STRAFE_ACCEL
 	else:
-		velocity.y = 0
+		velocity.y = lerp(velocity.y, 0.0, .05)
 	
 	if velocity.x > max_speed_achieved: 
 		max_speed_achieved = velocity.x
@@ -47,17 +51,22 @@ func _physics_process(delta: float) -> void:
 	
 	var collision = get_last_slide_collision()
 	if collision != null:
+		var collider = collision.get_collider()
 		var normal := collision.get_normal()
-		print(normal)
-		var angle := collision.get_angle()
-		print(angle)
-		print(rad_to_deg(angle))
-		#if alive && collision != null && collision.get_collider() is RigidBody2D:
-			#var collider := collision.get_collider() as Asteroid
-			#collider.apply_force(velocity - collider.linear_velocity, collision.get_position())
-
+		var angle := collision.get_angle(Vector2.LEFT)
+		if collider != null && collider is Asteroid2:
+			var pos_diff = global_position - collider.global_position
+			var max_vel = Vector2Utils.max_v2([velocity, collider.velocity]) 
+			if max_vel.length() < 50: max_vel = max_vel.normalized() * 50
+			
+			velocity += pos_diff.normalized() * max_vel
+			collider.velocity = (-pos_diff.normalized() * BOUNCE_VECTOR * max_vel.length()) 
+			
 			#velocity.bounce(normal)
-			#if abs(angle) < 60:
+		if alive:
+			var deg = abs(rad_to_deg(angle))
+			if deg < 30 || deg > 330:
+				print('die')
 				#die()
 
 func collect_item(item: Collectible):
@@ -71,12 +80,12 @@ func collect_item(item: Collectible):
 		print_debug('Collectible type not defined')
 
 func _on_shield_body_entered(body: Node2D) -> void:
-	if shield.visible && body is Asteroid:
-		var current_velocity = velocity
-		body.apply_central_impulse(velocity)	
+	if shield.visible && body is Asteroid2:
+		set_body_velocity(body)
 		velocity = velocity.normalized() * -25
 		shield.hide()
-		accleration = current_velocity.x / 5
-		await get_tree().create_timer(5).timeout
-		accleration = INIT_ACCELERATION
+	
+func set_body_velocity(body: Asteroid2) -> void:
+		var pos_diff = body.global_position - global_position
+		body.velocity = (pos_diff.normalized() * velocity.length())
 	

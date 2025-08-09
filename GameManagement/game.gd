@@ -12,7 +12,7 @@ class_name Game extends Node2D
 @onready var spawn_timer = $AsteroidSpawnTimer
 @onready var drop_list = $Drops
 
-var new_asteroid_scene := preload("res://Entities/SpaceObjects/Asteroid/rigid_asteroid.tscn")
+var new_asteroid_scene := preload("res://Entities/SpaceObjects/Asteroid/character_asteroid.tscn")
 		
 @export var asteroid_spawn_radius := 800.0
 @export var asteroid_spawn_max_velocity := 50.0
