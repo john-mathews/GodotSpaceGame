@@ -95,7 +95,14 @@ func setup_ship():
 	tractor_beam.data = load(GameState.tractor_beam_tiers[tractor_beam_level])
 
 func collect_item(item: Collectible):
-	PlayerInventory.add_item(item)
+	if item.type == Collectible.CollectibleTypes.RESOURCE:
+		PlayerInventory.add_item(item)
+	elif item.type == Collectible.CollectibleTypes.POWERUP:
+		pass
+	elif item.type == Collectible.CollectibleTypes.CURRENCY:
+		pass
+	else:
+		print_debug('Collectible type not defined')
 	
 func _on_tractor_beam_get_player(beam: Node2D) -> void:
 	beam.set_player(self)
