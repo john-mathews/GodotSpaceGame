@@ -93,11 +93,11 @@ func take_damage(damage: int):
 		emit_signal("exploded", global_position, size, pickup)
 		queue_free()
 
-func _on_body_entered(body: Node2D) -> void:
-	pass
+#func _on_body_entered(body: Node2D) -> void:
 	#if body is Player && body.alive:
-		#var player = body
-		#player.die()
+		#print(body.name)
+		##var player = body
+		##player.die()
 
 func _on_off_screen_kill_timer_kill_parent() -> void:
 	queue_free()

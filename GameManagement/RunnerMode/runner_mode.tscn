@@ -16,6 +16,7 @@ asteroid_spawn_radius = 1200.0
 asteroid_spawn_max_velocity = 30.0
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_d6pa6")]
+visible = false
 
 [node name="Player" parent="." instance=ExtResource("2_xrjfj")]
 rotation = 1.5708
