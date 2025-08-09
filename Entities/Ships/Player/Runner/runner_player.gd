@@ -32,6 +32,15 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
+func collect_item(item: Collectible):
+	if item.type == Collectible.CollectibleTypes.RESOURCE:
+		PlayerInventory.add_item(item)
+	elif item.type == Collectible.CollectibleTypes.POWERUP:
+		pass
+	elif item.type == Collectible.CollectibleTypes.CURRENCY:
+		pass
+	else:
+		print_debug('Collectible type not defined')
 
 func _on_shield_body_entered(body: Node2D) -> void:
 	if shield.visible && body is Asteroid:
