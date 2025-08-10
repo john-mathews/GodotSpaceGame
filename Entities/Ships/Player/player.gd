@@ -57,6 +57,25 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+	var collision = get_last_slide_collision()
+	if collision != null:
+		var collider = collision.get_collider()
+		#var normal := collision.get_normal()
+		var angle := collision.get_angle(Vector2.LEFT)
+		if collider != null && collider is Asteroid:
+			var pos_diff = global_position - collider.global_position
+			var max_vel = Vector2Utils.max_v2([velocity, collider.velocity]) 
+			if max_vel.length() < 50: max_vel = max_vel.normalized() * 50
+			
+			velocity += pos_diff.normalized() * max_vel
+			collider.velocity = (-pos_diff.normalized() * max_vel.length()) 
+			
+			#velocity.bounce(normal)
+		if alive:
+			var deg = abs(rad_to_deg(angle))
+			if deg < 30 || deg > 330:
+				pass
+				#die()
 	
 func die():
 	if alive:

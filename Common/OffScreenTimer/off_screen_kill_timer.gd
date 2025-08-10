@@ -1,4 +1,4 @@
-extends VisibleOnScreenNotifier2D
+class_name OffScreenKill extends VisibleOnScreenNotifier2D
 
 signal killParent
 var shouldKillParent := false
