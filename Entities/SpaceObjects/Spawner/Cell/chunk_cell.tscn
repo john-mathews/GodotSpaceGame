@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvon32feqiyn3"]
+
+[ext_resource type="PackedScene" uid="uid://7ihwysli31g1" path="res://Entities/SpaceObjects/Asteroid/character_asteroid.tscn" id="1_mgohh"]
+
+[node name="ChunkCell" type="Node2D"]
+
+[node name="CharacterAsteroid2" parent="." instance=ExtResource("1_mgohh")]
+position = Vector2(69, 71)
+velocity = Vector2(33.0272, 0)
+
+[node name="CharacterAsteroid3" parent="." instance=ExtResource("1_mgohh")]
+position = Vector2(68, 25)
+velocity = Vector2(33.0272, 0)
+size = 1
+
+[node name="CharacterAsteroid4" parent="." instance=ExtResource("1_mgohh")]
+position = Vector2(25, 75)
+velocity = Vector2(33.0272, 0)
+size = 1
+
+[node name="CharacterAsteroid5" parent="." instance=ExtResource("1_mgohh")]
+position = Vector2(22, 27)
+velocity = Vector2(33.0272, 0)
+size = 2

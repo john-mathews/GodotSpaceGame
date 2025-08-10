@@ -1,8 +1,7 @@
-[gd_scene load_steps=26 format=3 uid="uid://7ihwysli31g1"]
+[gd_scene load_steps=25 format=3 uid="uid://7ihwysli31g1"]
 
 [ext_resource type="Script" uid="uid://byi4hfc27bp3d" path="res://Entities/SpaceObjects/Asteroid/character_asteroid.gd" id="1_vjtm0"]
 [ext_resource type="Shape2D" uid="uid://cb1jddtoom0bp" path="res://Entities/SpaceObjects/Asteroid/Resources/asteroid_collision_M.tres" id="2_vjtm0"]
-[ext_resource type="PackedScene" uid="uid://drhg7ronxchov" path="res://Common/OffScreenTimer/off_screen_kill_timer.tscn" id="3_g8dod"]
 [ext_resource type="PackedScene" uid="uid://d2ngm8f08flqt" path="res://Common/SpritePicker/rng_sprite_picker_list.tscn" id="4_xubum"]
 [ext_resource type="Texture2D" uid="uid://8of251ijb5fk" path="res://Entities/SpaceObjects/Asteroid/Assets/meteorBrown_big1.png" id="5_olc0s"]
 [ext_resource type="Texture2D" uid="uid://k0fptof8ldiy" path="res://Entities/SpaceObjects/Asteroid/Assets/meteorBrown_big2.png" id="6_d65pq"]
@@ -35,8 +34,6 @@ script = ExtResource("1_vjtm0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = ExtResource("2_vjtm0")
-
-[node name="OffScreenKillTimer" parent="." instance=ExtResource("3_g8dod")]
 
 [node name="SpritePickers" type="Node" parent="."]
 

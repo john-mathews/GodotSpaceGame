@@ -41,7 +41,9 @@ func _physics_process(delta: float) -> void:
 	elif position.y < (camera.limit_bottom - 25) && input_vector.y > 0:
 		if abs(velocity.y) < STRAFE:
 			velocity.y += input_vector.y * STRAFE * delta * STRAFE_ACCEL
-	else:
+	elif abs(position.y) > abs(camera.limit_top):
+		velocity.y = 0.0
+	elif input_vector.y == 0.0:
 		velocity.y = lerp(velocity.y, 0.0, .05)
 	
 	if velocity.x > max_speed_achieved: 
@@ -66,7 +68,7 @@ func _physics_process(delta: float) -> void:
 		if alive:
 			var deg = abs(rad_to_deg(angle))
 			if deg < 30 || deg > 330:
-				print('die')
+				pass
 				#die()
 
 func collect_item(item: Collectible):
