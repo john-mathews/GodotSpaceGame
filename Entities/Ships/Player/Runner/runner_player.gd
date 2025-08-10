@@ -10,7 +10,7 @@ const BOUNCE_VECTOR := Vector2(1.5, 1.0)
 @onready var shield := $ShipParts/Shield
 #using vectors to store values of speed acceleration map
 #x is max speed and y is acceleration
-var speed_acceleration_map := [Vector2(25,50), Vector2(100, 25), Vector2(250,10), Vector2(1000,5), Vector2(1500,2)]
+var speed_acceleration_map := [Vector2(25,25), Vector2(100, 10), Vector2(250,5), Vector2(1000,2)]
 
 
 func _ready() -> void:
@@ -30,7 +30,7 @@ func _physics_process(delta: float) -> void:
 			if velocity.x < speed_key.x:
 				accleration = speed_key.y
 				break
-			elif speed_key == speed_acceleration_map[-1]:
+			else:
 				accleration = 1
 	velocity.x += (delta * accleration)
 	
@@ -52,9 +52,9 @@ func _physics_process(delta: float) -> void:
 	var collision = get_last_slide_collision()
 	if collision != null:
 		var collider = collision.get_collider()
-		var normal := collision.get_normal()
+		#var normal := collision.get_normal()
 		var angle := collision.get_angle(Vector2.LEFT)
-		if collider != null && collider is Asteroid2:
+		if collider != null && collider is Asteroid:
 			var pos_diff = global_position - collider.global_position
 			var max_vel = Vector2Utils.max_v2([velocity, collider.velocity]) 
 			if max_vel.length() < 50: max_vel = max_vel.normalized() * 50
@@ -80,12 +80,12 @@ func collect_item(item: Collectible):
 		print_debug('Collectible type not defined')
 
 func _on_shield_body_entered(body: Node2D) -> void:
-	if shield.visible && body is Asteroid2:
+	if shield.visible && body is Asteroid:
 		set_body_velocity(body)
 		velocity = velocity.normalized() * -25
 		shield.hide()
 	
-func set_body_velocity(body: Asteroid2) -> void:
+func set_body_velocity(body: Asteroid) -> void:
 		var pos_diff = body.global_position - global_position
 		body.velocity = (pos_diff.normalized() * velocity.length())
 	

@@ -1,4 +1,4 @@
-class_name Asteroid extends RigidBody2D
+class_name RigidAsteroid extends RigidBody2D
 
 signal exploded(pos, size, points, drop)
 enum AsteroidSize{LARGE, MEDIUM, SMALL, TINY}

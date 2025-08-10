@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://biejk84de0uj5" path="res://Entities/Ships/ShipParts/Shield/shield.gd" id="1_uamus"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_drrcs"]
-radius = 40.0
+radius = 30.0
 
 [node name="Shield" type="Area2D"]
 collision_layer = 2
@@ -16,4 +16,5 @@ shape = SubResource("CircleShape2D_drrcs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0, 1, 1, 0.184314)
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("1_cqekr")

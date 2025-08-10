@@ -13,7 +13,7 @@ func _on_off_screen_kill_timer_kill_parent() -> void:
 	queue_free()
 
 func _on_body_entered(body: Node2D) -> void:
-	if body is Asteroid2:
+	if body is Asteroid:
 		var asteroid = body
 		asteroid.take_damage(attack_power)
 		queue_free()

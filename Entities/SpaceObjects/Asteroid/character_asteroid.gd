@@ -1,5 +1,4 @@
-class_name Asteroid2 extends CharacterBody2D
-
+class_name Asteroid extends CharacterBody2D
 
 signal exploded(pos, size, points, drop)
 enum AsteroidSize{LARGE, MEDIUM, SMALL, TINY}
@@ -94,7 +93,7 @@ func _physics_process(delta: float) -> void:
 			var average_vel = (velocity + collider.velocity) / 2.0
 			velocity = (pos_diff.normalized() * average_vel.length()) 
 			collider.velocity = (-pos_diff.normalized() * average_vel.length()) 
-		if collider is Asteroid2:
+		if collider is Asteroid:
 			var pos_diff = global_position - collider.global_position
 			var average_mass = (mass + collider.mass) / 2.0
 			var average_vel = (velocity + collider.velocity) / 2.0

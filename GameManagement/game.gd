@@ -12,6 +12,8 @@ class_name Game extends Node2D
 @onready var spawn_timer = $AsteroidSpawnTimer
 @onready var drop_list = $Drops
 
+var asteroid_spawns:= [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN]
+
 var new_asteroid_scene := preload("res://Entities/SpaceObjects/Asteroid/character_asteroid.tscn")
 		
 @export var asteroid_spawn_radius := 800.0
@@ -48,15 +50,21 @@ func _on_asteroid_exploded(pos: Vector2, size: Asteroid.AsteroidSize, drop: Pick
 			pass
 
 func spawn_asteroid(pos: Vector2, size: Asteroid.AsteroidSize, amount := 2):
+	asteroid_spawns.shuffle()
 	for i in amount:
-		var newAsteroid = new_asteroid_scene.instantiate()
-		newAsteroid.global_position = pos
-		newAsteroid.size = size
+		var offset:= Vector2.ZERO
+		var new_asteroid = new_asteroid_scene.instantiate()
+		if i < asteroid_spawns.size():
+			offset = asteroid_spawns[i] * 20
+			new_asteroid.velocity = asteroid_spawns[i] * 50 + Vector2(abs(player.velocity.x), 0.0)
+			
+		new_asteroid.global_position = pos + offset
+		new_asteroid.size = size
 		if size == Asteroid.AsteroidSize.LARGE: 
-			newAsteroid.max_velocity = asteroid_spawn_max_velocity
-			newAsteroid.look_at(player.global_position + (player.velocity.normalized() * randf_range(0, asteroid_spawn_radius)))
-		newAsteroid.connect("exploded", _on_asteroid_exploded)
-		asteroids.call_deferred("add_child", newAsteroid)
+			new_asteroid.max_velocity = asteroid_spawn_max_velocity
+			new_asteroid.look_at(player.global_position + (player.velocity.normalized() * randf_range(0, asteroid_spawn_radius)))
+		new_asteroid.connect("exploded", _on_asteroid_exploded)
+		asteroids.call_deferred("add_child", new_asteroid)
 	
 func _on_player_damaged():
 	if !player.alive:
