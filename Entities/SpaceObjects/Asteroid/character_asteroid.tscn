@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=3 uid="uid://7ihwysli31g1"]
 
 [ext_resource type="Script" uid="uid://byi4hfc27bp3d" path="res://Entities/SpaceObjects/Asteroid/character_asteroid.gd" id="1_vjtm0"]
-[ext_resource type="Shape2D" uid="uid://cb1jddtoom0bp" path="res://Entities/SpaceObjects/Asteroid/Resources/asteroid_collision_M.tres" id="2_vjtm0"]
+[ext_resource type="Shape2D" uid="uid://b8rm0fn5dtr36" path="res://Entities/SpaceObjects/Asteroid/Resources/asteroid_collision_S.tres" id="2_u8vtd"]
 [ext_resource type="PackedScene" uid="uid://d2ngm8f08flqt" path="res://Common/SpritePicker/rng_sprite_picker_list.tscn" id="4_xubum"]
 [ext_resource type="Texture2D" uid="uid://8of251ijb5fk" path="res://Entities/SpaceObjects/Asteroid/Assets/meteorBrown_big1.png" id="5_olc0s"]
 [ext_resource type="Texture2D" uid="uid://k0fptof8ldiy" path="res://Entities/SpaceObjects/Asteroid/Assets/meteorBrown_big2.png" id="6_d65pq"]
@@ -25,7 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://b2kh04y7y0aes" path="res://Entities/SpaceObjects/Asteroid/Assets/meteorGrey_tiny2.png" id="24_coni0"]
 [ext_resource type="PackedScene" uid="uid://dx663bgskkwdf" path="res://UI/HealthBar/progress_bar.tscn" id="25_gm4h2"]
 
-[node name="CharacterAsteroid" type="CharacterBody2D"]
+[node name="CharacterAsteroid" type="CharacterBody2D" groups=["Asteroids"]]
 collision_layer = 4
 collision_mask = 30
 script = ExtResource("1_vjtm0")
@@ -33,7 +33,7 @@ script = ExtResource("1_vjtm0")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = ExtResource("2_vjtm0")
+shape = ExtResource("2_u8vtd")
 
 [node name="SpritePickers" type="Node" parent="."]
 

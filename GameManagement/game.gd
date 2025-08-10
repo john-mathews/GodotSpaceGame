@@ -40,9 +40,9 @@ func _on_asteroid_exploded(pos: Vector2, size: Asteroid.AsteroidSize, drop: Pick
 	drop_list.call_deferred("add_child", drop)
 	match size:
 		Asteroid.AsteroidSize.LARGE:
-			spawn_asteroid(pos, Asteroid.AsteroidSize.MEDIUM, randi_range(1,2))
+			spawn_asteroid(pos, Asteroid.AsteroidSize.MEDIUM,2)
 		Asteroid.AsteroidSize.MEDIUM:
-			spawn_asteroid(pos, Asteroid.AsteroidSize.SMALL, randi_range(2,3))
+			spawn_asteroid(pos, Asteroid.AsteroidSize.SMALL, 2)
 		Asteroid.AsteroidSize.SMALL:
 			pass
 			#spawn_asteroid(pos, Asteroid.AsteroidSize.TINY, randi_range(3,6)) 

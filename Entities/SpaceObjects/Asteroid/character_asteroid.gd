@@ -47,14 +47,14 @@ func _ready() -> void:
 			collision_shape.set_deferred("shape", preload("res://Entities/SpaceObjects/Asteroid/Resources/asteroid_collision_L.tres"))
 		AsteroidSize.MEDIUM:
 			max_velocity = randi_range(75, 125)
-			health = 10
+			health = 12
 			mass = 40
 			health_bar_offset = -20
 			sprite.texture = load(medium_sprite_picker.select_sprite())
 			collision_shape.set_deferred("shape", preload("res://Entities/SpaceObjects/Asteroid/Resources/asteroid_collision_M.tres"))
 		AsteroidSize.SMALL:
 			max_velocity = randi_range(100, 150)
-			health = 3
+			health = 5
 			mass = 20
 			health_bar_offset = -10
 			sprite.texture = load(small_sprite_picker.select_sprite())

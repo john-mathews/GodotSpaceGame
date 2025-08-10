@@ -20,6 +20,8 @@ visible = false
 
 [node name="Player" parent="." instance=ExtResource("2_xrjfj")]
 rotation = 1.5708
+laser_weapon_level = 2
+mining_laser_level = 2
 
 [node name="Asteroids" type="Node2D" parent="."]
 
